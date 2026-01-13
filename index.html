@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
+    <title>Portafolio | Diego Chicaiza</title>
     <link rel="icon" href="https://github.com/htmlpapu/Assets-Portafolio/blob/main/fav_icon_64x.png?raw=true" type="image/png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
             
             /* ACCENT: PURPLE RAIN */
             --accent: #8b5cf6; 
-            --accent-glow: rgba(139, 92, 246, 0.2); /* Un poco más intenso para el header */
+            --accent-glow: rgba(139, 92, 246, 0.2);
             
             --border: #222;
             --font-main: 'Inter', sans-serif;
@@ -48,9 +48,9 @@
             margin: 0 auto;
         }
 
-        /* 1. SIDEBAR FIJA (Ahora con Experiencia) */
+        /* 1. SIDEBAR FIJA */
         .sidebar {
-            width: 300px; /* Un poco más ancha para que quepa la info */
+            width: 300px;
             padding: 4rem 2.5rem;
             position: sticky;
             top: 0;
@@ -59,11 +59,9 @@
             flex-direction: column;
             border-right: 1px solid var(--border);
             flex-shrink: 0;
-            overflow-y: auto; /* Scroll si la pantalla es muy baja */
+            overflow-y: auto;
         }
-        /* Ocultar scrollbar fea en sidebar */
         .sidebar::-webkit-scrollbar { width: 0px; background: transparent; }
-
 
         .brand { font-weight: 700; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 12px; margin-bottom: 3rem;}
         .avatar-small { 
@@ -93,7 +91,6 @@
         .exp-company { font-size: 0.85rem; color: var(--text-muted); }
         .exp-date { font-size: 0.75rem; color: #555; margin-top: 2px; }
 
-
         .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-top: auto; }
         .contact-area a:hover { color: var(--accent); }
 
@@ -103,13 +100,12 @@
             padding: 5rem 6rem;
         }
 
-        /* HEADER CON "ALMA" (Efecto de luz) */
+        /* HEADER CON "ALMA" */
         .profile-header { 
             margin-bottom: 6rem; 
             max-width: 800px; 
             position: relative;
         }
-        /* El brillo morado de fondo */
         .profile-header::before {
             content: '';
             position: absolute;
@@ -138,20 +134,19 @@
         }
         h2::after { content: ""; flex: 1; height: 1px; background: #222; }
 
-
         /* PROYECTOS */
         .project-block {
             background: var(--bg-card);
             border-radius: 16px;
             border: 1px solid var(--border);
             overflow: hidden;
-            margin-bottom: 5rem; /* Más espacio entre proyectos */
+            margin-bottom: 5rem;
             transition: 0.4s ease;
         }
 
         .project-block:hover {
             border-color: var(--accent);
-            box-shadow: 0 0 40px var(--accent-glow); /* Glow más intenso */
+            box-shadow: 0 0 40px var(--accent-glow);
             transform: translateY(-5px);
         }
 
@@ -191,10 +186,10 @@
             .container { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border); overflow-y: visible;}
             .nav-links { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;}
-            .sidebar-exp-list { display: none; } /* Ocultar exp compacta en móvil para no saturar */
+            .sidebar-exp-list { display: none; }
             .main-content { padding: 3rem 1.5rem; }
             .project-gallery { grid-template-columns: 1fr; }
-            .profile-header::before { opacity: 0.4; } /* Menos brillo en móvil */
+            .profile-header::before { opacity: 0.4; }
         }
     </style>
 </head>
@@ -211,7 +206,8 @@
 
                 <nav class="nav-links">
                     <div class="section-title">Jump to Projects</div>
-                    <a href="#nestle" class="nav-item">● Nestlé Intelligence</a>
+                    <a href="#anton" class="nav-item">● Anton Oil Intelligence</a>
+                    <a href="#nestle" class="nav-item">○ Nestlé Intelligence</a>
                     <a href="#qtgc" class="nav-item">○ QTGC Finance</a>
                     <a href="#ministerio" class="nav-item">○ Export Strategy</a>
                 </nav>
@@ -262,34 +258,59 @@
             <section id="projects">
                 <h2>Selected Work</h2>
 
-                <a href="project-nestle.html" id="nestle" class="project-block" style="display: block; text-decoration: none; color: inherit;">
-    
-    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" class="project-header-img header-contain" alt="Nestle Cover">
-    
-    <div class="project-content">
-        <div class="project-meta">
-            <h3 class="project-title">Nestlé Market Intelligence</h3>
-            <span class="project-tag">Power BI + Strategy</span>
-        </div>
-        
-        <p class="project-desc">
-            Optimización de portafolio y simulación financiera de <strong>$490k USD</strong>. 
-            Desarrollo de un sistema de Business Intelligence para analizar 3.5M kg de importaciones. 
-            La solución incluye simuladores financieros (What-If), detección de nichos premium y forecasting predictivo.
-        </p>
+                <a href="project-anton.html" id="anton" class="project-block" style="display: block; text-decoration: none; color: inherit;">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_HEADER.jpg?raw=true" class="project-header-img header-contain" alt="Anton Oil Header">
+                    
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <h3 class="project-title">Anton Oil Market Intelligence</h3>
+                            <span class="project-tag">Power BI + Financial Engineering</span>
+                        </div>
+                        
+                        <p class="project-desc">
+                            Diseño de un "Command Center" para visualizar un mercado de importación de <strong>$4.07 Billones</strong>. 
+                            El sistema transforma 17,000 registros de aduana en insights estratégicos, incluyendo un algoritmo de <strong>Escudo Fiscal</strong> que detectó <strong>$608k en protección de flujo de caja</strong> y optimización logística.
+                        </p>
 
-        <div class="project-gallery">
-            <div class="gallery-item">
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Vista Financiera">
-                <div class="gallery-caption">Simulación de Rentabilidad</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%201.png?raw=true" alt="Vista Mercado">
-                <div class="gallery-caption">Panorama Competitivo</div>
-            </div>
-        </div>
-    </div>
-</a>
+                        <div class="project-gallery">
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA1.png?raw=true" alt="Market Overview">
+                                <div class="gallery-caption">Strategic Market Overview</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA2.png?raw=true" alt="Financial Optimization">
+                                <div class="gallery-caption">Financial & Customs Optimization</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="project-nestle.html" id="nestle" class="project-block" style="display: block; text-decoration: none; color: inherit;">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" class="project-header-img header-contain" alt="Nestle Cover">
+    
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <h3 class="project-title">Nestlé Market Intelligence</h3>
+                            <span class="project-tag">Power BI + Strategy</span>
+                        </div>
+        
+                        <p class="project-desc">
+                            Optimización de portafolio y simulación financiera de <strong>$490k USD</strong>. 
+                            Desarrollo de un sistema de Business Intelligence para analizar 3.5M kg de importaciones. 
+                            La solución incluye simuladores financieros (What-If), detección de nichos premium y forecasting predictivo.
+                        </p>
+
+                        <div class="project-gallery">
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Vista Financiera">
+                                <div class="gallery-caption">Simulación de Rentabilidad</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%201.png?raw=true" alt="Vista Mercado">
+                                <div class="gallery-caption">Panorama Competitivo</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
                 <article id="qtgc" class="project-block">
                     <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Qtgc.png?raw=true" class="project-header-img header-contain" alt="QTGC Dashboard">
@@ -358,4 +379,3 @@
 
 </body>
 </html>
-
