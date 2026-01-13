@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anton Oil Market Intelligence</title>
+    <link rel="icon" href="https://github.com/htmlpapu/Assets-Portafolio/blob/main/fav_icon_64x.png?raw=true" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #050505;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --accent: #3b82f6; /* AZUL NEÓN CORPORATIVO */
+            --border: #262626;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            margin: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .back-link:hover { color: var(--accent); transform: translateX(-5px); }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 8rem 2rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            margin-bottom: 4rem;
+        }
+        .meta-item h4 { font-size: 0.75rem; text-transform: uppercase; color: #555; margin: 0 0 5px 0; letter-spacing: 1px;}
+        .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 2rem 0 1rem 0;
+            border: 1px solid #222;
+            transition: transform 0.3s ease;
+        }
+        img:hover { border-color: #444; transform: scale(1.01); }
+
+        .caption {
+            text-align: center; font-size: 0.85rem; color: #666; 
+            margin-bottom: 4rem; display: block; margin-top: -0.5rem;
+        }
+
+        h2 { font-size: 1.8rem; font-weight: 700; margin-top: 5rem; margin-bottom: 1.5rem; color: #fff; border-bottom: 1px solid #222; padding-bottom: 10px;}
+        h3 { font-size: 1.3rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #e5e7eb; }
+        
+        ul { list-style-type: none; padding: 0; }
+        li { 
+            margin-bottom: 1rem; 
+            padding-left: 1.5rem; 
+            position: relative; 
+            color: #d1d5db;
+        }
+        li::before {
+            content: "▹";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        strong { color: #fff; }
+
+        .highlight-box {
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .highlight-text { font-size: 1.2rem; font-weight: 500; color: #fff; font-style: italic; margin: 0;}
+
+        /* AJUSTE PARA EL IFRAME VERTICAL (1024x1060) */
+        .embed-wrapper {
+            position: relative;
+            width: 100%;
+            /* Ratio calculado: 1060 / 1024 = 103.5% para que sea cuadrado/vertical */
+            padding-bottom: 103.5%; 
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            margin-top: 2rem;
+        }
+        .embed-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .article-container { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-link">← Volver al Portafolio</a>
+    </nav>
+
+    <div class="article-container">
+        
+        <h1 class="hero-title">Anton Oil Market Intelligence System</h1>
+        <p class="hero-subtitle">High-Tech "Command Center" dashboard to visualize a $4.07 Billion import market and optimize fiscal strategy.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>BI Consultant</p>
+            </div>
+            <div class="meta-item">
+                <h4>Stack</h4>
+                <p>Power BI, M (Power Query), DAX</p>
+            </div>
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>$608k Cash Flow Protected</p>
+            </div>
+        </div>
+
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_HEADER.jpg?raw=true" alt="Anton Oil Cover">
+        
+        <h2>Phase I: Data Engineering (ETL)</h2>
+        <p>The raw data source was a fragmented dataset of 17,000+ customs declarations containing inconsistencies, mixed currencies, and "dirty" geographical data.</p>
+        
+        <ul>
+            <li><strong>Deep Cleaning Pipeline:</strong> Engineered a robust Power Query transformation to normalize Country names to ISO standards and standardize Units of Measure.</li>
+            <li><strong>Star Schema Modeling:</strong> Built a data model ensuring 100% integrity between Regional Masters and Transactional tables.</li>
+            <li><strong>Data Quality Logic:</strong> Implemented algorithms to preserve high-volume "Undisclosed Origin" data while filtering statistical noise.</li>
+        </ul>
+
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_DATOS.png?raw=true" alt="Data Transformation Collage">
+        <span class="caption">Data Standardization & Cleaning Process</span>
+
+        <h2>Phase II: Strategic Market Overview</h2>
+        <p>Designed for the Country Manager, this view answers: <em>"Who dominates the market, and where is the supply coming from?"</em></p>
+
+        <ul>
+            <li><strong>Global Sourcing Map:</strong> Integrated Azure Maps in Dark Mode to visualize real-time trade routes and supply chain dependencies.</li>
+            <li><strong>Competitor Tracking:</strong> Dynamic ranking system calculating market share for key players (e.g., Tenaris: $117M), enabling targeted sales strategies.</li>
+            <li><strong>Context-Aware UI:</strong> Engineered DAX measures for dynamic titles that adapt to user selection (Global vs. Country-Specific views).</li>
+        </ul>
+
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA1.png?raw=true" alt="Strategic Dashboard View">
+        <span class="caption">Executive Market Overview Dashboard</span>
+
+        <h2>Phase III: Financial & Customs Optimization</h2>
+        <p>Moving beyond sales, this module focuses on <strong>Operational Efficiency</strong> and <strong>Cash Flow Protection</strong>.</p>
+
+        <ul>
+            <li><strong>The "Fiscal Shield" Algorithm:</strong> Created complex DAX logic to calculate <strong>$608k in protected Cash Flow</strong> via "Temporary Admission" regimes, offering 37% more accuracy than flat estimates.</li>
+            <li><strong>Logistics Reality Check:</strong> Engineered a hybrid Lead Time calculation (Customs Report vs. Arrival Date), revealing that <strong>Air Freight ($6.2/kg) is ~60x more expensive</strong> than Sea Freight ($0.1/kg).</li>
+        </ul>
+
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA2.png?raw=true" alt="Financial Dashboard View">
+        <span class="caption">Financial & Customs Optimization Dashboard</span>
+
+        <div class="highlight-box">
+            <p class="highlight-text">
+                "Design Philosophy: A Dark Mode / Neon aesthetic aligned with the 'High-Tech Energy' brand identity, ensuring data visibility in low-light presentation environments."
+            </p>
+        </div>
+
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_ICONOS.png?raw=true" alt="Neon Icons Design System">
+        <span class="caption">Custom UI Elements & Iconography</span>
+
+        <h2 style="border:none;">Live Interaction</h2>
+        <p>Interactúa con el reporte real a continuación. Prueba los tooltips y la navegación entre páginas.</p>
+        
+        <div class="embed-wrapper">
+            <iframe title="AntonOIl_Dashboard" width="1024" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiMTc2YWNjMmYtYzI0Mi00ZTJiLTk2ODgtODZmNjVlYWI1NTExIiwidCI6ImFhZjAxNDIwLThmMzItNDllNS1iY2VmLTc5NTM0MGMxZjk2YSJ9" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+
+    </div>
+
+</body>
+</html>
