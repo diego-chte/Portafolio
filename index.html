@@ -176,10 +176,15 @@
         .gallery-item {
             background: #050505; padding: 12px 12px 0 12px; border-radius: 10px; border: 1px solid #222;
             transition: 0.3s;
+            /* Añadido para que el enlace ocupe todo el espacio */
+            display: block; 
+            text-decoration: none;
         }
-        .gallery-item:hover { border-color: #444; }
+        .gallery-item:hover { border-color: #444; cursor: pointer; }
         .gallery-item img { width: 100%; border-radius: 6px 6px 0 0; display: block; }
         .gallery-caption { font-size: 0.8rem; color: #777; text-align: center; padding: 10px 0; font-weight: 500;}
+        /* Efecto hover en el texto al pasar el mouse */
+        .gallery-item:hover .gallery-caption { color: var(--accent); }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
@@ -284,6 +289,7 @@
                         </div>
                     </div>
                 </a>
+
                 <a href="project-nestle.html" id="nestle" class="project-block" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" class="project-header-img header-contain" alt="Nestle Cover">
     
@@ -345,29 +351,30 @@
                 </article>
 
                 <article id="ministerio" class="project-block">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_ministerio.png?raw=true" class="project-header-img header-contain" alt="Estudio Mercado">
+                    <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/AGUACATE_HEADER.png?raw=true" class="project-header-img header-contain" alt="Estudio Mercado">
                     
                     <div class="project-content">
                         <div class="project-meta">
-                            <h3 class="project-title">Asian Market Entry Strategy</h3>
-                            <span class="project-tag">Market Research + Feasibility</span>
+                            <h3 class="project-title">Asian Market Expansion & Consumer Insights</h3>
+                            <span class="project-tag">Consumer Behavior + Market Sizing</span>
                         </div>
                         
                         <p class="project-desc">
-                            Modelo de factibilidad técnica y financiera para la exportación de productos agrícolas (Aguacate Hass) hacia Corea del Sur.
-                            El proyecto analizó barreras arancelarias y costos logísticos, validando la viabilidad del negocio con una 
-                            <strong>TIR sólida del 25%</strong> y un <strong>VAN proyectado de $26.8M</strong>.
+                            Estrategia de penetración de mercado basada en datos. Se identificó una oportunidad de 
+                            <strong>$26.8M (VAN)</strong> en Corea del Sur analizando tendencias de consumo saludable y segmentación demográfica. 
+                            El estudio cruza barreras arancelarias con preferencias del <strong>'Shopper' asiático</strong> para definir una ruta de exportación rentable.
                         </p>
 
                         <div class="project-gallery">
-                            <div class="gallery-item">
+                            <a href="https://drive.google.com/file/d/1aNye18EtJOdZ52E2yhBb9ySV2M3o4Hj0/view?usp=sharing" target="_blank" class="gallery-item">
                                 <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Rentabilidad_Mercado.png?raw=true" alt="Propuesta Negocio">
-                                <div class="gallery-caption">Modelo Financiero (TIR/VAN)</div>
-                            </div>
-                            <div class="gallery-item">
+                                <div class="gallery-caption">Modelo Financiero (TIR/VAN) ↗</div>
+                            </a>
+                            
+                            <a href="https://drive.google.com/file/d/11bXwxvyDIBt5VV85xY7GkKE87j1dA7Al/view?usp=sharing" target="_blank" class="gallery-item">
                                 <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Estudio_Mercado.png?raw=true" alt="Estudio Mercado">
-                                <div class="gallery-caption">Análisis de Mercado (Corea)</div>
-                            </div>
+                                <div class="gallery-caption">Análisis de Mercado (Corea) ↗</div>
+                            </a>
                         </div>
                     </div>
                 </article>
