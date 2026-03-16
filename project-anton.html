@@ -15,10 +15,13 @@
             --bg-body: #050505;
             --text-main: #ffffff;
             --text-muted: #9ca3af;
-            --accent: #3b82f6; /* AZUL NEÓN CORPORATIVO */
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.1);
             --border: #262626;
             --font-main: 'Inter', sans-serif;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-body);
@@ -29,17 +32,19 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        a { text-decoration: none; color: inherit; }
+
         nav {
             padding: 2rem;
             max-width: 1000px;
             margin: 0 auto;
         }
+
         .back-link {
             color: var(--text-muted);
-            text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: 0.2s;
@@ -52,20 +57,38 @@
             padding: 2rem 2rem 8rem 2rem;
         }
 
+        /* --- HERO --- */
+        .hero-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.5rem;
+        }
+
         .hero-title {
             font-size: 3rem;
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 1rem;
+            margin: 0 0 1rem 0;
             letter-spacing: -0.02em;
         }
+
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
             margin-bottom: 3rem;
             max-width: 700px;
+            line-height: 1.6;
         }
 
+        /* --- META GRID --- */
         .meta-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -75,34 +98,68 @@
             padding: 1.5rem 0;
             margin-bottom: 4rem;
         }
-        .meta-item h4 { font-size: 0.75rem; text-transform: uppercase; color: #555; margin: 0 0 5px 0; letter-spacing: 1px;}
-        .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
+        .meta-item h4 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #555;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .meta-item p { margin: 0; font-weight: 600; font-size: 0.95rem; color: #e5e7eb; }
+
+        /* --- IMAGES --- */
+        .hero-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 0 4rem 0;
+            border: 1px solid var(--border);
+        }
 
         img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             display: block;
-            margin: 2rem 0 1rem 0;
+            margin: 2rem 0 0.75rem 0;
             border: 1px solid #222;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
         img:hover { border-color: #444; transform: scale(1.01); }
 
         .caption {
-            text-align: center; font-size: 0.85rem; color: #666; 
-            margin-bottom: 4rem; display: block; margin-top: -0.5rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #555;
+            margin-bottom: 3.5rem;
+            display: block;
+            font-weight: 500;
         }
 
-        h2 { font-size: 1.8rem; font-weight: 700; margin-top: 5rem; margin-bottom: 1.5rem; color: #fff; border-bottom: 1px solid #222; padding-bottom: 10px;}
-        h3 { font-size: 1.3rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #e5e7eb; }
-        
-        ul { list-style-type: none; padding: 0; }
-        li { 
-            margin-bottom: 1rem; 
-            padding-left: 1.5rem; 
-            position: relative; 
-            color: #d1d5db;
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin: 5rem 0 1.5rem 0;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        h3 { font-size: 1.1rem; font-weight: 600; margin: 2.5rem 0 0.75rem 0; color: #e5e7eb; }
+        p { font-size: 1.05rem; color: #c9d1d9; margin-bottom: 1.5rem; line-height: 1.75; }
+        strong { color: #fff; }
+
+        /* --- LIST --- */
+        ul { list-style: none; padding: 0; margin: 1rem 0 2rem 0; }
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.75rem;
+            position: relative;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
         li::before {
             content: "▹";
@@ -111,55 +168,84 @@
             left: 0;
             font-weight: bold;
         }
-        strong { color: #fff; }
 
+        /* --- HIGHLIGHT BOX --- */
         .highlight-box {
-            background: rgba(59, 130, 246, 0.05);
-            border-left: 4px solid var(--accent);
-            padding: 2rem;
-            margin: 3rem 0;
+            background: var(--accent-glow);
+            border-left: 3px solid var(--accent);
+            padding: 1.75rem 2rem;
+            margin: 3.5rem 0;
             border-radius: 0 12px 12px 0;
         }
-        .highlight-text { font-size: 1.2rem; font-weight: 500; color: #fff; font-style: italic; margin: 0;}
+        .highlight-text {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #e5e7eb;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.6;
+        }
 
-        /* AJUSTE PARA EL IFRAME VERTICAL (1024x1060) */
+        /* --- TECH GRID (two images side by side) --- */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .two-col-grid img { margin: 0; }
+        .two-col-grid .caption { margin-top: 0.5rem; }
+
+        /* --- EMBED --- */
         .embed-wrapper {
             position: relative;
             width: 100%;
-            /* Ratio calculado: 1060 / 1024 = 103.5% para que sea cuadrado/vertical */
-            padding-bottom: 103.5%; 
+            padding-bottom: 103.5%;
             height: 0;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 60px var(--accent-glow);
             margin-top: 2rem;
         }
         .embed-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
         }
 
+        /* --- SECTION LABEL --- */
+        .section-label {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
-            .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .article-container { padding: 1.5rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .two-col-grid { grid-template-columns: 1fr; }
+            .article-container { padding: 1.5rem 1.5rem 6rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="back-link">← Volver al Portafolio</a>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
     </nav>
 
     <div class="article-container">
-        
+
+        <span class="hero-tag">Power BI · Financial Engineering</span>
         <h1 class="hero-title">Anton Oil Market Intelligence System</h1>
-        <p class="hero-subtitle">High-Tech "Command Center" dashboard to visualize a $4.07 Billion import market and optimize fiscal strategy.</p>
+        <p class="hero-subtitle">A high-tech "Command Center" engineered to map a $4.07B import market, expose supply chain dependencies, and protect $608k in cash flow through fiscal optimization.</p>
 
         <div class="meta-grid">
             <div class="meta-item">
@@ -168,7 +254,7 @@
             </div>
             <div class="meta-item">
                 <h4>Stack</h4>
-                <p>Power BI, M (Power Query), DAX</p>
+                <p>Power BI · M (Power Query) · DAX</p>
             </div>
             <div class="meta-item">
                 <h4>Impact</h4>
@@ -176,55 +262,72 @@
             </div>
         </div>
 
-        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_HEADER.jpg?raw=true" alt="Anton Oil Cover">
-        
-        <h2>Phase I: Data Engineering (ETL)</h2>
-        <p>The raw data source was a fragmented dataset of 17,000+ customs declarations containing inconsistencies, mixed currencies, and "dirty" geographical data.</p>
-        
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_HEADER.jpg?raw=true" alt="Anton Oil Cover" class="hero-img">
+
+        <!-- ACT I -->
+        <span class="section-label">Act I — The Problem</span>
+        <h2>The Challenge</h2>
+        <p>The client operated in a highly competitive oil import market with no structural visibility into who dominated supply, where prices were headed, or how customs decisions were eroding their margins. Their existing reports could describe <em>what happened</em>, but not <em>why</em> — and certainly not <em>what to do about it</em>.</p>
+        <p>The raw data source was a fragmented dataset of <strong>17,000+ customs declarations</strong> across multiple currencies, inconsistent country codes, and unclassified units of measure — making any analysis unreliable without a full engineering overhaul first.</p>
+
+        <!-- ACT II -->
+        <span class="section-label">Act II — The Engineering</span>
+        <h2>Data Infrastructure</h2>
+        <p>Before any insight could be generated, the data needed to be rebuilt from the ground up into a reliable, queryable architecture.</p>
+
         <ul>
-            <li><strong>Deep Cleaning Pipeline:</strong> Engineered a robust Power Query transformation to normalize Country names to ISO standards and standardize Units of Measure.</li>
-            <li><strong>Star Schema Modeling:</strong> Built a data model ensuring 100% integrity between Regional Masters and Transactional tables.</li>
-            <li><strong>Data Quality Logic:</strong> Implemented algorithms to preserve high-volume "Undisclosed Origin" data while filtering statistical noise.</li>
+            <li><strong>Deep Cleaning Pipeline:</strong> Engineered a robust Power Query transformation to normalize country names to ISO standards and standardize units of measure — eliminating the ambiguity that made prior reports unreliable.</li>
+            <li><strong>Star Schema Modeling:</strong> Restructured the flat file into a relational Star Schema, ensuring 100% referential integrity between regional dimension tables and transactional fact tables.</li>
+            <li><strong>Data Quality Logic:</strong> Implemented custom algorithms to preserve high-volume "Undisclosed Origin" records — retaining market signal that others would have discarded — while filtering genuine statistical noise.</li>
         </ul>
 
-        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_DATOS.png?raw=true" alt="Data Transformation Collage">
-        <span class="caption">Data Standardization & Cleaning Process</span>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_DATOS.png?raw=true" alt="Data Transformation Process">
+        <span class="caption">Data Standardization & Cleaning Pipeline</span>
 
-        <h2>Phase II: Strategic Market Overview</h2>
-        <p>Designed for the Country Manager, this view answers: <em>"Who dominates the market, and where is the supply coming from?"</em></p>
+        <!-- ACT III -->
+        <span class="section-label">Act III — The Analysis</span>
+        <h2>Strategic Market Overview</h2>
+        <p>Designed for the Country Manager, this view answers the most critical executive question: <em>"Who controls this market — and where is the supply actually coming from?"</em></p>
 
         <ul>
-            <li><strong>Global Sourcing Map:</strong> Integrated Azure Maps in Dark Mode to visualize real-time trade routes and supply chain dependencies.</li>
-            <li><strong>Competitor Tracking:</strong> Dynamic ranking system calculating market share for key players (e.g., Tenaris: $117M), enabling targeted sales strategies.</li>
-            <li><strong>Context-Aware UI:</strong> Engineered DAX measures for dynamic titles that adapt to user selection (Global vs. Country-Specific views).</li>
+            <li><strong>Global Sourcing Map:</strong> Integrated Azure Maps in dark mode to visualize real-time trade routes and supply chain concentration risks by country of origin.</li>
+            <li><strong>Competitor Intelligence:</strong> A dynamic ranking engine calculating live market share per player (e.g., Tenaris: $117M), enabling data-driven identification of underserved segments.</li>
+            <li><strong>Context-Aware UI:</strong> DAX measures powering dynamic titles that automatically shift between Global and Country-specific views based on user filter state.</li>
         </ul>
 
         <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA1.png?raw=true" alt="Strategic Dashboard View">
         <span class="caption">Executive Market Overview Dashboard</span>
 
-        <h2>Phase III: Financial & Customs Optimization</h2>
-        <p>Moving beyond sales, this module focuses on <strong>Operational Efficiency</strong> and <strong>Cash Flow Protection</strong>.</p>
+        <h2>Financial & Customs Optimization</h2>
+        <p>The second module shifts focus from market positioning to <strong>operational efficiency</strong> — specifically, how customs strategy was leaking cash that could be recovered.</p>
 
         <ul>
-            <li><strong>The "Fiscal Shield" Algorithm:</strong> Created complex DAX logic to calculate <strong>$608k in protected Cash Flow</strong> via "Temporary Admission" regimes, offering 37% more accuracy than flat estimates.</li>
-            <li><strong>Logistics Reality Check:</strong> Engineered a hybrid Lead Time calculation (Customs Report vs. Arrival Date), revealing that <strong>Air Freight ($6.2/kg) is ~60x more expensive</strong> than Sea Freight ($0.1/kg).</li>
+            <li><strong>The "Fiscal Shield" Algorithm:</strong> Developed complex DAX logic modeling "Temporary Admission" customs regimes, identifying <strong>$608k in protectable cash flow</strong> — with 37% more precision than flat-rate industry estimates.</li>
+            <li><strong>Logistics Reality Check:</strong> Built a hybrid Lead Time calculation reconciling Customs Report dates against actual Arrival Dates, surfacing a critical finding: <strong>Air Freight at $6.2/kg is ~60x more expensive than Sea Freight at $0.1/kg</strong>, yet was being used as a default.</li>
         </ul>
 
         <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA2.png?raw=true" alt="Financial Dashboard View">
         <span class="caption">Financial & Customs Optimization Dashboard</span>
 
+        <!-- ACT IV -->
+        <span class="section-label">Act IV — The Design</span>
+        <h2>Design System</h2>
+
         <div class="highlight-box">
-            <p class="highlight-text">
-                "Design Philosophy: A Dark Mode / Neon aesthetic aligned with the 'High-Tech Energy' brand identity, ensuring data visibility in low-light presentation environments."
-            </p>
+            <p class="highlight-text">"A Dark Mode / Neon aesthetic was intentionally chosen to align with the client's 'High-Tech Energy' brand identity — ensuring maximum data visibility in low-light boardroom environments."</p>
         </div>
 
-        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_ICONOS.png?raw=true" alt="Neon Icons Design System">
-        <span class="caption">Custom UI Elements & Iconography</span>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_ICONOS.png?raw=true" alt="Custom UI Iconography">
+        <span class="caption">Custom Icon System & UI Component Library</span>
 
-        <h2 style="border:none;">Live Interaction</h2>
-        <p>Interactúa con el reporte real a continuación. Prueba los tooltips y la navegación entre páginas.</p>
-        
+        <!-- ACT V -->
+        <span class="section-label">Act V — The Outcome</span>
+        <h2>Strategic Impact</h2>
+        <p>The system transformed a passive reporting process into an active decision engine. The Country Manager gained, for the first time, a single source of truth to monitor competitive dynamics, optimize logistics spend, and defend $608k in cash flow through documented fiscal strategy — converting customs compliance from a cost center into a competitive advantage.</p>
+
+        <h2 style="border:none; margin-top: 3rem;">Live Interaction</h2>
+        <p>Explore the full report below. Test the tooltips, page navigation, and dynamic filters.</p>
+
         <div class="embed-wrapper">
             <iframe title="AntonOIl_Dashboard" width="1920" height="1080" src="https://app.powerbi.com/view?r=eyJrIjoiMTc2YWNjMmYtYzI0Mi00ZTJiLTk2ODgtODZmNjVlYWI1NTExIiwidCI6ImFhZjAxNDIwLThmMzItNDllNS1iY2VmLTc5NTM0MGMxZjk2YSJ9" frameborder="0" allowFullScreen="true"></iframe>
         </div>
@@ -232,5 +335,4 @@
     </div>
 
 </body>
-
 </html>
