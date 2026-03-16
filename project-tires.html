@@ -15,10 +15,13 @@
             --bg-body: #050505;
             --text-main: #ffffff;
             --text-muted: #9ca3af;
-            --accent: #3b82f6; 
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.1);
             --border: #262626;
             --font-main: 'Inter', sans-serif;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-body);
@@ -29,17 +32,19 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        a { text-decoration: none; color: inherit; }
+
         nav {
             padding: 2rem;
             max-width: 1000px;
             margin: 0 auto;
         }
+
         .back-link {
             color: var(--text-muted);
-            text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: 0.2s;
@@ -52,20 +57,38 @@
             padding: 2rem 2rem 8rem 2rem;
         }
 
+        /* --- HERO --- */
+        .hero-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.5rem;
+        }
+
         .hero-title {
             font-size: 3rem;
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 1rem;
+            margin: 0 0 1rem 0;
             letter-spacing: -0.02em;
         }
+
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
             margin-bottom: 3rem;
             max-width: 700px;
+            line-height: 1.6;
         }
 
+        /* --- META GRID --- */
         .meta-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -75,34 +98,68 @@
             padding: 1.5rem 0;
             margin-bottom: 4rem;
         }
-        .meta-item h4 { font-size: 0.75rem; text-transform: uppercase; color: #555; margin: 0 0 5px 0; letter-spacing: 1px;}
-        .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
+        .meta-item h4 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #555;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .meta-item p { margin: 0; font-weight: 600; font-size: 0.95rem; color: #e5e7eb; }
+
+        /* --- IMAGES --- */
+        .hero-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 0 4rem 0;
+            border: 1px solid var(--border);
+        }
 
         img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             display: block;
-            margin: 2rem 0 1rem 0;
+            margin: 2rem 0 0.75rem 0;
             border: 1px solid #222;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
         img:hover { border-color: #444; transform: scale(1.01); }
 
         .caption {
-            text-align: center; font-size: 0.85rem; color: #666; 
-            margin-bottom: 4rem; display: block; margin-top: -0.5rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #555;
+            margin-bottom: 3.5rem;
+            display: block;
+            font-weight: 500;
         }
 
-        h2 { font-size: 1.8rem; font-weight: 700; margin-top: 5rem; margin-bottom: 1.5rem; color: #fff; border-bottom: 1px solid #222; padding-bottom: 10px;}
-        h3 { font-size: 1.3rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: #e5e7eb; }
-        
-        ul { list-style-type: none; padding: 0; }
-        li { 
-            margin-bottom: 1rem; 
-            padding-left: 1.5rem; 
-            position: relative; 
-            color: #d1d5db;
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin: 5rem 0 1.5rem 0;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        h3 { font-size: 1.1rem; font-weight: 600; margin: 2.5rem 0 0.75rem 0; color: #e5e7eb; }
+        p { font-size: 1.05rem; color: #c9d1d9; margin-bottom: 1.5rem; line-height: 1.75; }
+        strong { color: #fff; }
+
+        /* --- LIST --- */
+        ul { list-style: none; padding: 0; margin: 1rem 0 2rem 0; }
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.75rem;
+            position: relative;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
         li::before {
             content: "▹";
@@ -111,53 +168,104 @@
             left: 0;
             font-weight: bold;
         }
-        strong { color: #fff; }
 
+        /* --- HIGHLIGHT BOX --- */
         .highlight-box {
-            background: rgba(59, 130, 246, 0.05);
-            border-left: 4px solid var(--accent);
-            padding: 2rem;
-            margin: 3rem 0;
+            background: var(--accent-glow);
+            border-left: 3px solid var(--accent);
+            padding: 1.75rem 2rem;
+            margin: 3.5rem 0;
             border-radius: 0 12px 12px 0;
         }
-        .highlight-text { font-size: 1.2rem; font-weight: 500; color: #fff; font-style: italic; margin: 0;}
+        .highlight-text {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #e5e7eb;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.6;
+        }
 
+        /* --- STAT ROW --- */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .stat-card {
+            background: #0d0d0d;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .stat-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
+        .stat-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- EMBED --- */
         .embed-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 62.25%; 
+            padding-bottom: 62.25%;
             height: 0;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 60px var(--accent-glow);
             margin-top: 2rem;
         }
         .embed-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
         }
 
+        /* --- SECTION LABEL --- */
+        .section-label {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
-            .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .article-container { padding: 1.5rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .stat-row { grid-template-columns: 1fr; }
+            .article-container { padding: 1.5rem 1.5rem 6rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="back-link">← Volver al Portafolio</a>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
     </nav>
 
     <div class="article-container">
-        
+
+        <span class="hero-tag">BI · Strategic Sourcing · M&A</span>
         <h1 class="hero-title">Commercial Tire Market: M&A & Strategic Sourcing Assessment</h1>
-        <p class="hero-subtitle">A data-driven approach to Supply Chain Arbitrage and Margin Capture processing over 46,000 customs records.</p>
+        <p class="hero-subtitle">An institutional-grade analytical pipeline processing over 46,000 customs records to model a <strong>$328M market</strong> — revealing structural arbitrage opportunities through predictive data cleansing and macro-financial modeling.</p>
 
         <div class="meta-grid">
             <div class="meta-item">
@@ -166,7 +274,7 @@
             </div>
             <div class="meta-item">
                 <h4>Stack</h4>
-                <p>Power BI, DAX, Python (Data Cleansing)</p>
+                <p>Power BI · DAX · Python (ML)</p>
             </div>
             <div class="meta-item">
                 <h4>Impact</h4>
@@ -174,58 +282,93 @@
             </div>
         </div>
 
-        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/tire_header.jpg?raw=true" alt="Tire Market Header">
-        
-        <h2>The Data Engine & Predictive Cleansing</h2>
-        <p>Para garantizar la precisión de la tesis de inversión y evitar los puntos ciegos comunes en los análisis comerciales convencionales, se construyó un pipeline analítico de grado institucional[cite: 152]:</p>
-        
+        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/tire_header.jpg?raw=true" alt="Tire Market Header" class="hero-img">
+
+        <!-- ACT I -->
+        <span class="section-label">Act I — The Problem</span>
+        <h2>The Challenge</h2>
+        <p>A potential acquirer needed to evaluate whether the commercial tire distribution market represented a viable M&A target — and if so, where the most defensible entry point was. Standard market reports weren't sufficient: the investment thesis required transaction-level evidence of market structure, pricing behavior, and margin concentration.</p>
+        <p>The raw dataset — over <strong>46,000 customs records</strong> — contained a critical flaw: a substantial portion of high-value entries had generic, unclassified product descriptions, creating blind spots precisely where the most strategic signal was concentrated. Any analysis built on top of this uncleansed data would produce a distorted picture of who actually controlled the market.</p>
+
+        <!-- ACT II -->
+        <span class="section-label">Act II — The Engineering</span>
+        <h2>Data Engine & Predictive Cleansing</h2>
+        <p>Before the market could be modeled, its data needed to be made trustworthy. The pipeline was built in two stages: first cleansing the data with machine learning, then integrating it with macroeconomic variables to evaluate cost elasticity.</p>
+
         <ul>
-            <li><strong>Predictive Cleansing:</strong> Gran parte de la data aduanera original presentaba descripciones genéricas. Se implementó un modelo de Machine Learning (Random Forest con 78.4% de precisión) basado en variables físicas (peso/precio) para inferir y clasificar estas descripciones ciegas en segmentos comerciales precisos[cite: 153].</li>
-            <li><strong>Macro Integration:</strong> Datos de importación (FOB/CIF) fueron cruzados y normalizados mediante modelado de Esquema Estrella con datos financieros macroeconómicos (YEN/WTI con rezagos de 90 días) para evaluar la elasticidad de los costos[cite: 154].</li>
+            <li><strong>Predictive Cleansing (ML):</strong> A Random Forest classifier trained on physical product attributes — unit weight and CIF price per unit — was used to infer commercial segment classifications for entries with generic descriptions, achieving <strong>78.4% accuracy</strong>. This recovered signal that a standard filter-and-exclude approach would have permanently lost.</li>
+            <li><strong>Macro Integration:</strong> Import cost data (FOB/CIF) was joined with external macroeconomic time series — JPY/USD exchange rate and WTI crude oil — using 90-day lag adjustments to test whether local pricing reflected actual input cost movements or was being set by local market dynamics.</li>
+            <li><strong>Star Schema Modeling:</strong> The cleaned dataset was restructured into a relational architecture — separating dimension tables (Segment, Origin, Time) from the central transactions fact table — enabling reliable DAX calculations across large filter contexts.</li>
         </ul>
 
-        <h2>1. Structural Overview & M&A Feasibility</h2>
-        <p>El mercado evaluado presenta una estructura altamente vulnerable. Con un índice de concentración CR5 del 34.1% y un HHI de 376.43, el panorama comercial está fragmentado y carece de un líder absoluto[cite: 197, 199, 260].</p>
+        <div class="stat-row">
+            <div class="stat-card">
+                <span class="stat-value">46k+</span>
+                <span class="stat-label">Records Processed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">78.4%</span>
+                <span class="stat-label">ML Classifier Accuracy</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">$328M</span>
+                <span class="stat-label">Market Modeled</span>
+            </div>
+        </div>
+
+        <!-- ACT III -->
+        <span class="section-label">Act III — The Analysis</span>
+        <h2>Market Structure & M&A Feasibility</h2>
+        <p>The structural analysis surfaced a market that is both fragmented and asymmetric — a combination that signals clear M&A opportunity. With a <strong>CR5 concentration index of 34.1%</strong> and an HHI of 376.43, no single player holds structural dominance, yet certain segments are disproportionately controlled by a handful of regional distributors.</p>
 
         <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Overview.PNG?raw=true" alt="Market Overview Dashboard">
-        <span class="caption">Structural Market Overview & Fragmentation Analysis</span>
-
-        <p>Esta atomización del mercado y el control asimétrico de los segmentos representan un terreno fértil para una estrategia de consolidación (Roll-Up M&A). Adquirir distribuidores medianos (Tier-2) permitiría capturar participación de mercado sin enfrentar barreras monopolísticas[cite: 261, 262]. Además, existe un riesgo geopolítico latente mitigable mediante arbitraje logístico, dada la exposición del 80.8% a la manufactura china[cite: 312, 326].</p>
-
-        <h2>2. Profit Pool & Pricing Power</h2>
-        <p>El análisis de rentabilidad segmentada deconstruye la ilusión del volumen. Mientras que segmentos como Highway y Light Commercial mueven grandes cantidades de unidades, el verdadero poder de fijación de precios se concentra en el transporte pesado e industrial[cite: 192].</p>
-
-        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Segment.PNG?raw=true" alt="Profit Structure Dashboard">
-        <span class="caption">Segment Profit Structure & Value Concentration</span>
+        <span class="caption">Structural Market Overview & Fragmentation Index</span>
 
         <ul>
-            <li><strong>Heavy Truck Dominance:</strong> Este segmento captura estructuralmente el mayor valor del mercado, funcionando como un nicho de alto margen aislado de la competencia de productos básicos puros[cite: 191].</li>
-            <li><strong>Strategic Focus:</strong> Cualquier estrategia de entrada o desarrollo de producto debe sobreponderar los segmentos Heavy Truck y Off-Road para maximizar el retorno sobre el capital invertido (ROIC)[cite: 193].</li>
+            <li><strong>Roll-Up M&A Thesis:</strong> The fragmentation and asymmetric segment control create a classic roll-up opportunity — acquiring Tier-2 regional distributors at reasonable multiples would compound market share without triggering monopolistic barriers.</li>
+            <li><strong>Geopolitical Risk:</strong> An 80.8% exposure to Chinese manufacturing represents a concentration risk that is both quantifiable and hedgeable through a deliberate multi-origin sourcing strategy.</li>
+        </ul>
+
+        <h2>Profit Pool & Pricing Power</h2>
+        <p>Volume and value are not the same thing. The profit pool analysis deconstructs the revenue structure to show where margin actually lives — and the answer contradicts the intuitive assumption that the highest-volume segments are also the most profitable.</p>
+
+        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Segment.PNG?raw=true" alt="Segment Profit Structure">
+        <span class="caption">Segment Profit Structure — Value vs. Volume Decomposition</span>
+
+        <ul>
+            <li><strong>Heavy Truck Dominance:</strong> The Heavy Truck segment captures a structurally disproportionate share of total market value — functioning as a high-margin niche insulated from commodity-tier competition.</li>
+            <li><strong>Strategic Implication:</strong> Any market entry or product investment strategy should overweight Heavy Truck and Off-Road segments to maximize return on invested capital, rather than chasing volume in commoditized light commercial categories.</li>
         </ul>
 
         <div class="highlight-box">
-            <p class="highlight-text">
-                "La analítica de datos aplicada a la logística permite separar el volumen aparente de la rentabilidad estructural, identificando nichos donde el Pricing Power prevalece sobre la competencia."
-            </p>
+            <p class="highlight-text">"Applied data analytics separates apparent volume from structural profitability — revealing the niches where Pricing Power prevails over commodity competition."</p>
         </div>
 
-        <h2>3. The Arbitrage Opportunity (Macro Margin Capture)</h2>
-        <p>La integración de variables macroeconómicas con datos de aduana reveló una profunda ineficiencia estructural en la cadena de distribución local, identificada mediante dos indicadores clave.</p>
+        <h2>The Arbitrage Opportunity — Macro Margin Capture</h2>
+        <p>Integrating macroeconomic variables with customs data exposed a deep structural inefficiency in the local distribution chain, confirmed by two independent mathematical indicators.</p>
 
-        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Pricing.PNG?raw=true" alt="Macro Margin Capture Dashboard">
+        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Pricing.PNG?raw=true" alt="FX and Commodity Arbitrage Analysis">
         <span class="caption">FX Inelasticity & Commodity Disconnect Analysis</span>
 
         <ul>
-            <li><strong>Pricing to Market (Absorción de Margen):</strong> Los datos comprueban matemáticamente, con una elasticidad de +0.19, que la devaluación histórica del Yen no fue trasladada al consumidor final. Los distribuidores locales emplean una estrategia de fijación de precios al mercado, reteniendo el diferencial cambiario como utilidad extraordinaria[cite: 285, 288, 289].</li>
-            <li><strong>Price Stickiness:</strong> La correlación cercana a cero (+0.04) entre el precio FOB local y las fluctuaciones globales del crudo (WTI) confirma que los costos están aislados de los shocks de materias primas y son dictados por oligopolios locales[cite: 286, 290].</li>
+            <li><strong>Pricing-to-Market (Margin Absorption):</strong> With a JPY price elasticity of just +0.19, the data confirms mathematically that the historical depreciation of the Yen was never passed on to end customers. Local distributors absorbed the FX differential as extraordinary profit — a practice that a direct-sourcing operator could immediately monetize.</li>
+            <li><strong>Price Stickiness:</strong> A near-zero correlation (+0.04) between local FOB prices and global crude oil fluctuations confirms that input costs are decoupled from commodity markets. Prices are set by local oligopoly dynamics, not by actual cost structure — which means a more efficient operator would enjoy structurally superior margins from day one.</li>
         </ul>
 
-        <h2>The Strategic Outcome</h2>
-        <p>Adquirir un operador local y conectarlo de manera directa a una red global de abastecimiento eliminaría instantáneamente la intermediación ineficiente[cite: 300]. Diseñamos un simulador de costo de oportunidad (What-If Parameter) que demuestra que capturar apenas un 15% de este "Spread FX" atrapado inyectaría rentabilidad inmediata y asimétrica en el primer año operativo[cite: 301].</p>
+        <!-- ACT IV -->
+        <span class="section-label">Act IV — The Simulation</span>
+        <h2>What-If Cost-of-Opportunity Simulator</h2>
+        <p>To quantify the investment thesis, a parametric financial simulator was built allowing the acquirer to stress-test scenarios interactively. The model demonstrates that capturing just <strong>15% of the trapped FX spread</strong> would generate immediate, asymmetric profitability in year one — without requiring operational restructuring or price increases to end customers.</p>
+        <p>This transforms the analysis from a descriptive market overview into an actionable investment memo: a tool that answers not just "what is the opportunity?" but "what happens to our returns if we capture even a fraction of it?"</p>
 
-        <h2 style="border:none;">Live Interaction</h2>
-        <p>Explore el reporte interactivo y sus distintas vistas de análisis financiero y logístico a continuación.</p>
-        
+        <!-- ACT V -->
+        <span class="section-label">Act V — The Outcome</span>
+        <h2>Strategic Outcome</h2>
+        <p>Acquiring a local operator and connecting it directly to a global sourcing network would eliminate inefficient intermediation in a single structural move. The combination of a fragmented market, a quantifiable FX arbitrage, and a defensible profit pool in the Heavy Truck segment creates a well-supported M&A thesis — one backed by transaction-level data rather than industry averages or analyst estimates.</p>
+
+        <h2 style="border:none; margin-top: 3rem;">Live Interaction</h2>
+        <p>Explore the interactive report below, including the financial simulator and segment-level breakdowns.</p>
+
         <div class="embed-wrapper">
             <iframe title="datasur_neumaticos_reporte.csv" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNGVmMzA4NzktZjY1Yy00Njk5LWFkMjEtNWRhNTdlNmMyZTVkIiwidCI6ImFhZjAxNDIwLThmMzItNDllNS1iY2VmLTc5NTM0MGMxZjk2YSJ9&pageName=6f27ef50c5ac6d4164b9" frameborder="0" allowFullScreen="true"></iframe>
         </div>
