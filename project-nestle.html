@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +15,13 @@
             --bg-body: #050505;
             --text-main: #ffffff;
             --text-muted: #9ca3af;
-            --accent: #8b5cf6; /* Morado */
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.1);
             --border: #262626;
             --font-main: 'Inter', sans-serif;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg-body);
@@ -29,47 +32,63 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- NAV SUPERIOR --- */
+        a { text-decoration: none; color: inherit; }
+
         nav {
             padding: 2rem;
             max-width: 1000px;
             margin: 0 auto;
         }
+
         .back-link {
             color: var(--text-muted);
-            text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: 0.2s;
         }
         .back-link:hover { color: var(--accent); transform: translateX(-5px); }
 
-        /* --- CONTENEDOR CENTRAL --- */
         .article-container {
             max-width: 900px;
             margin: 0 auto;
             padding: 2rem 2rem 8rem 2rem;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
+        .hero-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.5rem;
+        }
+
         .hero-title {
             font-size: 3rem;
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 1rem;
+            margin: 0 0 1rem 0;
             letter-spacing: -0.02em;
         }
+
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
             margin-bottom: 3rem;
             max-width: 700px;
+            line-height: 1.6;
         }
 
-        /* METADATA GRID */
+        /* --- META GRID --- */
         .meta-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -79,102 +98,157 @@
             padding: 1.5rem 0;
             margin-bottom: 4rem;
         }
-        .meta-item h4 { font-size: 0.75rem; text-transform: uppercase; color: #555; margin: 0 0 5px 0; letter-spacing: 1px;}
-        .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
+        .meta-item h4 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #555;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .meta-item p { margin: 0; font-weight: 600; font-size: 0.95rem; color: #e5e7eb; }
 
-        /* --- ESTILOS DE IMÁGENES --- */
+        /* --- IMAGES --- */
+        .hero-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 0 4rem 0;
+            border: 1px solid var(--border);
+        }
+
         img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             display: block;
-            margin: 2rem 0 1rem 0;
+            margin: 2rem 0 0.75rem 0;
             border: 1px solid #222;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        
-        /* Efecto Lupa Sutil */
-        img:hover {
-            border-color: #444;
-            transform: scale(1.02);
-        }
+        img:hover { border-color: #444; transform: scale(1.02); }
 
         .caption {
             text-align: center;
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 4rem;
+            font-size: 0.82rem;
+            color: #555;
+            margin-bottom: 3.5rem;
             display: block;
-            margin-top: -0.5rem;
+            font-weight: 500;
         }
 
-        /* --- TIPOGRAFÍA --- */
-        h2 { font-size: 1.8rem; font-weight: 700; margin-top: 5rem; margin-bottom: 1.5rem; color: #fff; border-bottom: 1px solid #222; padding-bottom: 10px;}
-        h3 { font-size: 1.3rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; color: #e5e7eb; }
-        p { font-size: 1.1rem; color: #d1d5db; margin-bottom: 1.5rem; line-height: 1.7; }
-        
-        /* CAJA DESTACADA */
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin: 5rem 0 1.5rem 0;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        h3 { font-size: 1.1rem; font-weight: 600; margin: 2.5rem 0 0.75rem 0; color: #e5e7eb; }
+        p { font-size: 1.05rem; color: #c9d1d9; margin-bottom: 1.5rem; line-height: 1.75; }
+        strong { color: #fff; }
+
+        /* --- LIST --- */
+        ul { list-style: none; padding: 0; margin: 1rem 0 2rem 0; }
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.75rem;
+            position: relative;
+            color: #c9d1d9;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        li::before {
+            content: "▹";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- HIGHLIGHT BOX --- */
         .highlight-box {
-            background: rgba(139, 92, 246, 0.05);
-            border-left: 4px solid var(--accent);
-            padding: 2rem;
-            margin: 3rem 0;
+            background: var(--accent-glow);
+            border-left: 3px solid var(--accent);
+            padding: 1.75rem 2rem;
+            margin: 3.5rem 0;
             border-radius: 0 12px 12px 0;
         }
-        .highlight-text { font-size: 1.2rem; font-weight: 500; color: #fff; font-style: italic; margin: 0;}
+        .highlight-text {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #e5e7eb;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.6;
+        }
 
-        /* --- SECCIÓN TÉCNICA (MODO GIGANTE CORREGIDO) --- */
+        /* --- TECH GRID (stacked engineering diagrams) --- */
         .tech-grid {
-            display: flex;          /* Flexbox para poner uno debajo de otro */
-            flex-direction: column; /* Dirección vertical */
-            gap: 4rem;              /* Espacio entre diagramas */
-            margin: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin: 2rem 0;
         }
-        
-        .tech-grid img { 
-            border: 1px solid #333; 
-            margin-top: 0; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para resaltar */
+        .tech-grid img {
+            margin: 0;
+            border: 1px solid #333;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
+        .tech-grid .caption { margin-top: 0.75rem; margin-bottom: 0; }
 
-        /* --- EMBED RESPONSIVE --- */
+        /* --- EMBED --- */
         .embed-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 0 60px var(--accent-glow);
             margin-top: 2rem;
         }
         .embed-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
         }
 
-        /* RESPONSIVE */
+        /* --- SECTION LABEL --- */
+        .section-label {
+            display: block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
-            .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .article-container { padding: 1.5rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .article-container { padding: 1.5rem 1.5rem 6rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="back-link">← Volver al Portafolio</a>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
     </nav>
 
     <div class="article-container">
-        
+
+        <span class="hero-tag">Power BI · Strategy</span>
         <h1 class="hero-title">Nestlé Market Intelligence Dashboard</h1>
-        <p class="hero-subtitle">Optimizando la estrategia de portafolio mediante simulación financiera y análisis predictivo de 3.5M de registros.</p>
+        <p class="hero-subtitle">A predictive intelligence platform built on 3.5M import records — surfacing a <strong>$490k opportunity</strong> through portfolio optimization, competitive pricing analysis, and financial simulation.</p>
 
         <div class="meta-grid">
             <div class="meta-item">
@@ -183,70 +257,78 @@
             </div>
             <div class="meta-item">
                 <h4>Stack</h4>
-                <p>Power BI, DAX, Power Query</p>
+                <p>Power BI · DAX · Power Query</p>
             </div>
             <div class="meta-item">
                 <h4>Impact</h4>
-                <p>$490k USD Opportunity Identified</p>
+                <p>$490k Opportunity Identified</p>
             </div>
         </div>
 
-        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" alt="Cover">
-        
-        <h2>The Challenge</h2>
-        <p>
-            El mercado de Nutrición Infantil es altamente volátil. La gerencia dependía de reportes estáticos de importaciones que mostraban "qué pasó" pero no "por qué" ni "qué pasará". 
-            Se necesitaba transformar millones de registros crudos de aduana en una herramienta estratégica que permitiera defender el liderazgo de mercado y detectar nichos rentables.
-        </p>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" alt="Nestlé Project Cover" class="hero-img">
 
-        <h2>The Engineering</h2>
-        <p>
-            La base de cualquier buen análisis es un modelo robusto. Transformé una tabla plana (flat file) en un <strong>Esquema Estrella (Star Schema)</strong>, normalizando dimensiones como Producto, Tiempo y Geografía para optimizar el rendimiento.
-        </p>
+        <!-- ACT I -->
+        <span class="section-label">Act I — The Problem</span>
+        <h2>The Challenge</h2>
+        <p>The infant nutrition market is highly volatile — margins shift with commodity prices, regulatory changes, and the entry of low-cost competitors from new origin countries. Management was relying on static import reports that could describe <em>what happened last quarter</em>, but offered no ability to model scenarios, monitor competitors in real time, or identify where premium pricing power was being left on the table.</p>
+        <p>The core question was not just analytical — it was strategic: <em>"Where should Nestlé double down, and where is the market moving against us?"</em></p>
+
+        <!-- ACT II -->
+        <span class="section-label">Act II — The Engineering</span>
+        <h2>Data Infrastructure</h2>
+        <p>Reliable strategy requires reliable data. The starting point was a flat customs file — a single monolithic table mixing transactional records with dimensional attributes, making it slow, fragile, and impossible to extend.</p>
+
+        <ul>
+            <li><strong>Star Schema Architecture:</strong> Normalized the flat file into a relational model, separating dimension tables (Product, Geography, Time) from the central fact table — reducing model complexity and dramatically improving DAX query performance.</li>
+            <li><strong>Advanced DAX Logic:</strong> Engineered custom measures for year-over-year competitor benchmarking, volume-weighted average pricing, and premium segment concentration indices that don't exist natively in Power BI.</li>
+        </ul>
 
         <div class="tech-grid">
             <div>
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Data_Model.png?raw=true" alt="Data Model Diagram">
-                <span class="caption">Arquitectura de Datos (Star Schema)</span>
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Data_Model.png?raw=true" alt="Star Schema Data Model">
+                <span class="caption">Data Architecture — Star Schema</span>
             </div>
             <div>
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_DAX_Code.png?raw=true" alt="DAX Logic Diagram">
-                <span class="caption">Lógica de Negocio (DAX Avanzado)</span>
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_DAX_Code.png?raw=true" alt="DAX Business Logic">
+                <span class="caption">Business Logic — Advanced DAX Formulas</span>
             </div>
         </div>
 
+        <!-- ACT III -->
+        <span class="section-label">Act III — The Analysis</span>
+        <h2>Competitive Intelligence</h2>
+        <p>With a reliable data foundation in place, the analysis focused on answering two interconnected strategic questions: who is gaining share, and at what price?</p>
+
+        <h3>1. Segment & Pricing Matrix</h3>
+        <p>This view correlates import volume against average CIF price per competitor — making it immediately visible whether Nestlé's premium pricing strategy holds up against low-cost entrants, or whether margin compression is occurring in specific segments.</p>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Vista2_Segmentos.png?raw=true" alt="Segment & Pricing Analysis">
+        <span class="caption">Volume vs. Price Matrix — Competitive Segment Positioning</span>
+
+        <h3>2. Competitive Price Evolution</h3>
+        <p>A time-series view tracking how each competitor's average import price has moved in response to market events — revealing price elasticity patterns and signaling which players are absorbing cost shocks versus passing them downstream.</p>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Vista3_Precios.png?raw=true" alt="Price Evolution Over Time">
+        <span class="caption">Competitive Pricing Trends — 24-Month View</span>
+
         <div class="highlight-box">
-            <p class="highlight-text">
-                "Transformación de Datos: De un reporte estático a una herramienta de toma de decisiones predictiva."
-            </p>
+            <p class="highlight-text">"The shift from static reporting to dynamic intelligence: from describing what happened to prescribing what to do next."</p>
         </div>
 
-        <h2>Analytical Deep Dive</h2>
-        <p>
-            Más allá del panorama general, el valor real se encuentra en los detalles. Diseñé vistas específicas para responder preguntas críticas sobre precios y segmentación.
-        </p>
+        <!-- ACT IV -->
+        <span class="section-label">Act IV — The Simulation</span>
+        <h2>Financial What-If Simulator</h2>
+        <p>The centerpiece of the system is an interactive financial simulator that allows management to stress-test growth assumptions in real time. By adjusting a single parameter — expected market growth rate — the model instantly projects the downstream impact on EBITDA, volume mix, and portfolio revenue concentration.</p>
+        <p>This transformed the dashboard from a descriptive tool into a decision-making instrument — enabling the team to walk into quarterly business reviews with pre-modeled scenarios rather than post-hoc explanations.</p>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="What-If Financial Simulator">
+        <span class="caption">What-If Financial Simulator — EBITDA Scenario Modeling</span>
 
-        <h3>1. Análisis de Segmentos & Precios</h3>
-        <p>
-            Esta matriz permite correlacionar Volumen vs. Precio Promedio (CIF) para identificar anomalías. Aquí validamos si la estrategia de precios premium de Nestlé se sostiene frente a competidores low-cost.
-        </p>
-        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Vista2_Segmentos.png?raw=true" alt="Vista Segmentos">
-        
-        <h3>2. Evolución de Precios Competitivos</h3>
-        <p>
-            Un gráfico de líneas temporal para monitorear la elasticidad precio y la reacción de la competencia ante nuestros ajustes tarifarios.
-        </p>
-        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Vista3_Precios.png?raw=true" alt="Vista Precios">
+        <!-- ACT V -->
+        <span class="section-label">Act V — The Outcome</span>
+        <h2>Strategic Impact</h2>
+        <p>The platform identified a <strong>$490k revenue opportunity</strong> concentrated in two underserved premium segments where Nestlé held pricing power that competitors couldn't match on cost structure. By combining competitive intelligence with scenario simulation, management could prioritize SKU investments and defend margin in the segments most exposed to low-cost substitution — shifting from reactive to proactive market strategy.</p>
 
-        <h2>The Strategic Outcome</h2>
-        <p>
-            La joya de la corona es el <strong>Simulador Financiero (What-If)</strong>. Permite a la gerencia ajustar la tasa de crecimiento esperada y visualizar inmediatamente el impacto en el EBITDA proyectado.
-        </p>
-        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Simulador Financiero">
+        <h2 style="border:none; margin-top: 3rem;">Live Interaction</h2>
+        <p>Explore the full report below. Test the tooltips, What-If sliders, and page navigation.</p>
 
-        <h2 style="border:none;">Live Interaction</h2>
-        <p>Interactúa con el reporte real a continuación. Prueba los tooltips y la navegación entre páginas.</p>
-        
         <div class="embed-wrapper">
             <iframe title="INFORME" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNTkxYzZjMWEtYTBhYy00M2JlLWJjNDEtZTQxMjNlOTBiOThhIiwidCI6ImFhZjAxNDIwLThmMzItNDllNS1iY2VmLTc5NTM0MGMxZjk2YSJ9" frameborder="0" allowFullScreen="true"></iframe>
         </div>
@@ -255,4 +337,3 @@
 
 </body>
 </html>
-
