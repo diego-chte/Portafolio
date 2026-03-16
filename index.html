@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | Diego Chicaiza</title>
+    <title>Portfolio | Diego Chicaiza</title>
     <link rel="icon" href="https://github.com/htmlpapu/Assets-Portafolio/blob/main/fav_icon_64x.png?raw=true" type="image/png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,20 +12,17 @@
 
     <style>
         :root {
-            /* TEMA DARK PURPLE */
             --bg-body: #050505;
             --bg-card: #0f0f0f;
             --text-main: #ffffff;
             --text-muted: #888;
-            
-            /* ACCENT: PURPLE RAIN */
-            --accent: #8b5cf6; 
+            --accent: #8b5cf6;
             --accent-glow: rgba(139, 92, 246, 0.2);
-            
             --border: #222;
             --font-main: 'Inter', sans-serif;
         }
 
+        * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
@@ -39,8 +36,8 @@
         }
 
         a { text-decoration: none; color: inherit; transition: 0.2s; }
-        
-        /* --- LAYOUT --- */
+
+        /* LAYOUT */
         .container {
             display: flex;
             width: 100%;
@@ -48,7 +45,7 @@
             margin: 0 auto;
         }
 
-        /* 1. SIDEBAR FIJA */
+        /* SIDEBAR */
         .sidebar {
             width: 300px;
             padding: 4rem 2.5rem;
@@ -63,345 +60,502 @@
         }
         .sidebar::-webkit-scrollbar { width: 0px; background: transparent; }
 
-        .brand { font-weight: 700; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 12px; margin-bottom: 3rem;}
-        .avatar-small { 
-            width: 40px; height: 40px; border-radius: 50%; 
+        .brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 3rem;
+        }
+        .avatar-small {
+            width: 40px; height: 40px; border-radius: 50%;
             filter: grayscale(100%); transition: 0.3s;
             border: 2px solid transparent;
         }
         .brand:hover .avatar-small { filter: grayscale(0%); border-color: var(--accent); }
 
-        /* NAV LATERAL */
-        .nav-links { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 3rem; }
-        
-        .section-title { 
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; 
-            color: #555; margin-bottom: 1rem; font-weight: 700;
+        /* NAV */
+        .nav-links { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 3rem; }
+
+        .section-label-sidebar {
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.2px;
+            color: #444; margin-bottom: 0.85rem; font-weight: 700;
         }
 
-        .nav-item { 
-            color: var(--text-muted); font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px;
+        .nav-item {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 3px 0;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .nav-item::before {
+            content: '○';
+            font-size: 0.55rem;
+            flex-shrink: 0;
+            transition: content 0.2s;
         }
         .nav-item:hover { color: var(--accent); transform: translateX(5px); }
+        .nav-item.active { color: var(--accent); transform: translateX(5px); }
+        .nav-item.active::before { content: '●'; }
 
-        /* EXPERIENCIA COMPACTA (SIDEBAR) */
-        .sidebar-exp-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 3rem;}
+        /* EXPERIENCE */
+        .sidebar-exp-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 3rem; }
         .sidebar-exp-item { display: flex; flex-direction: column; }
-        .exp-role { font-size: 0.9rem; font-weight: 600; color: #fff; }
-        .exp-company { font-size: 0.85rem; color: var(--text-muted); }
-        .exp-date { font-size: 0.75rem; color: #555; margin-top: 2px; }
+        .exp-role { font-size: 0.88rem; font-weight: 600; color: #fff; }
+        .exp-company { font-size: 0.82rem; color: var(--text-muted); }
+        .exp-date { font-size: 0.72rem; color: #444; margin-top: 2px; }
 
-        .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-top: auto; }
+        /* CONTACT */
+        .contact-area {
+            display: flex; flex-direction: column; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted); margin-top: auto;
+        }
         .contact-area a:hover { color: var(--accent); }
 
-        /* 2. CONTENIDO PRINCIPAL */
-        .main-content {
-            flex: 1;
-            padding: 5rem 6rem;
-        }
+        /* MAIN */
+        .main-content { flex: 1; padding: 5rem 6rem; }
 
-        /* HEADER CON "ALMA" */
-        .profile-header { 
-            margin-bottom: 6rem; 
-            max-width: 800px; 
+        /* HERO */
+        .profile-header {
+            margin-bottom: 6rem;
+            max-width: 800px;
             position: relative;
         }
         .profile-header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -20%;
-            width: 70%;
-            height: 150%;
+            top: -50%; left: -20%;
+            width: 70%; height: 150%;
             background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
             z-index: -1;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.55;
         }
-
-        h1 { 
-            font-size: 3rem; font-weight: 800; line-height: 1.1; 
-            letter-spacing: -0.02em; margin-bottom: 1.5rem; 
+        h1 {
+            font-size: 3rem; font-weight: 800; line-height: 1.1;
+            letter-spacing: -0.02em; margin-bottom: 1.5rem;
         }
-        
-        .bio-text { font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; max-width: 650px; }
+        .bio-text { font-size: 1.15rem; color: var(--text-muted); line-height: 1.72; max-width: 640px; }
         .highlight { color: var(--accent); font-weight: 600; }
 
+        /* SECTION HEADING */
         section { margin-bottom: 6rem; scroll-margin-top: 5rem; }
-        h2 { 
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; 
-            color: var(--text-muted); margin-bottom: 3rem; display: flex; align-items: center; gap: 10px;
+        h2 {
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px;
+            color: #444; margin-bottom: 3rem; display: flex; align-items: center; gap: 12px;
+            font-weight: 700;
         }
-        h2::after { content: ""; flex: 1; height: 1px; background: #222; }
+        h2::after { content: ""; flex: 1; height: 1px; background: var(--border); }
 
-        /* PROYECTOS */
+        /* PROJECT CARDS */
         .project-block {
             background: var(--bg-card);
             border-radius: 16px;
             border: 1px solid var(--border);
             overflow: hidden;
             margin-bottom: 5rem;
-            transition: 0.4s ease;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+            display: block;
         }
-
         .project-block:hover {
             border-color: var(--accent);
             box-shadow: 0 0 40px var(--accent-glow);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
         .project-header-img {
-            width: 100%; height: auto; display: block; 
+            width: 100%; height: auto; display: block;
             border-bottom: 1px solid var(--border); opacity: 0.95;
         }
-        .header-contain { object-fit: cover; max-height: 380px; }
+        .header-contain { object-fit: cover; max-height: 360px; }
 
-        .project-content { padding: 3rem; }
-        
-        .project-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
-        .project-title { font-size: 2rem; font-weight: 700; color: #fff; margin: 0; }
-        .project-tag { 
-            background: rgba(139, 92, 246, 0.1); color: var(--accent); 
-            padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; 
-            border: 1px solid rgba(139, 92, 246, 0.3); text-transform: uppercase; letter-spacing: 0.5px;
+        .project-content { padding: 2.5rem 3rem 3rem 3rem; }
+
+        /* top row: metric + tag */
+        .project-top-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .project-metric {
+            background: rgba(139, 92, 246, 0.12);
+            color: var(--accent);
+            border: 1px solid rgba(139, 92, 246, 0.28);
+            padding: 4px 13px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+        .project-tag {
+            background: transparent;
+            color: #555;
+            border: 1px solid #282828;
+            padding: 4px 13px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
 
-        .project-desc { color: #bbb; margin-bottom: 2.5rem; line-height: 1.7; font-size: 1.05rem; max-width: 90%; }
-        .disclaimer { font-size: 0.85rem; color: #555; font-style: italic; margin-top: 1.5rem; border-left: 3px solid #333; padding-left: 15px;}
+        .project-title { font-size: 1.85rem; font-weight: 700; color: #fff; margin: 0 0 1rem 0; line-height: 1.15; }
+        .project-desc { color: #aaa; margin: 0; line-height: 1.75; font-size: 1rem; max-width: 92%; }
 
-        /* GALERÍA DE IMÁGENES */
-        .project-gallery {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem;
+        /* stack pills */
+        .stack-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
         }
+        .stack-pill {
+            background: #131313;
+            border: 1px solid #272727;
+            color: #5a5a5a;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            font-weight: 500;
+        }
+
+        /* gallery */
+        .project-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
         .gallery-item {
-            background: #050505; padding: 12px 12px 0 12px; border-radius: 10px; border: 1px solid #222;
-            transition: 0.3s;
-            /* Añadido para que el enlace ocupe todo el espacio */
-            display: block; 
+            background: #050505;
+            padding: 10px 10px 0 10px;
+            border-radius: 10px;
+            border: 1px solid #1e1e1e;
+            transition: border-color 0.25s;
+            display: block;
             text-decoration: none;
         }
-        .gallery-item:hover { border-color: #444; cursor: pointer; }
-        .gallery-item img { width: 100%; border-radius: 6px 6px 0 0; display: block; }
-        .gallery-caption { font-size: 0.8rem; color: #777; text-align: center; padding: 10px 0; font-weight: 500;}
-        /* Efecto hover en el texto al pasar el mouse */
+        .gallery-item:hover { border-color: #383838; }
+        .gallery-item img { width: 100%; border-radius: 5px 5px 0 0; display: block; }
+        .gallery-caption { font-size: 0.78rem; color: #555; text-align: center; padding: 9px 0; font-weight: 500; }
         .gallery-item:hover .gallery-caption { color: var(--accent); }
+
+        /* CTA */
+        .project-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 2rem;
+            font-size: 0.87rem;
+            font-weight: 600;
+            color: var(--accent);
+            opacity: 0.7;
+            transition: opacity 0.25s, gap 0.25s;
+        }
+        .project-block:hover .project-cta { opacity: 1; gap: 10px; }
+
+        /* disclaimer */
+        .disclaimer {
+            font-size: 0.82rem; color: #444; font-style: italic;
+            margin-top: 1.5rem; border-left: 3px solid #1e1e1e; padding-left: 14px;
+        }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .container { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border); overflow-y: visible;}
-            .nav-links { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;}
+            .sidebar {
+                width: 100%; height: auto; position: relative;
+                padding: 2rem; border-right: none;
+                border-bottom: 1px solid var(--border); overflow-y: visible;
+            }
+            .nav-links { flex-direction: row; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 2rem; }
+            .nav-item::before { display: none; }
             .sidebar-exp-list { display: none; }
             .main-content { padding: 3rem 1.5rem; }
             .project-gallery { grid-template-columns: 1fr; }
-            .profile-header::before { opacity: 0.4; }
+            .project-content { padding: 1.75rem; }
+            .profile-header::before { opacity: 0.3; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <aside class="sidebar">
-            <div>
-                <div class="brand">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Foto%20de%20perfil.jpg?raw=true" class="avatar-small">
-                    <span>Diego Chicaiza</span>
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+            <a href="#" class="brand">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Foto%20de%20perfil.jpg?raw=true"
+                     class="avatar-small" alt="Diego Chicaiza">
+                <span>Diego Chicaiza</span>
+            </a>
+
+            <nav class="nav-links">
+                <div class="section-label-sidebar">Projects</div>
+                <a href="#tires"      class="nav-item" data-section="tires">Tire Market Assessment</a>
+                <a href="#anton"      class="nav-item" data-section="anton">Anton Oil Intelligence</a>
+                <a href="#nestle"     class="nav-item" data-section="nestle">Nestlé Intelligence</a>
+                <a href="#qtgc"       class="nav-item" data-section="qtgc">QTGC Cost Tower</a>
+                <a href="#ministerio" class="nav-item" data-section="ministerio">Export Strategy</a>
+            </nav>
+
+            <div class="section-label-sidebar">Experience</div>
+            <div class="sidebar-exp-list">
+                <div class="sidebar-exp-item">
+                    <span class="exp-role">Logistics Analyst (Trainee)</span>
+                    <span class="exp-company">Quito Tenis & Golf Club</span>
+                    <span class="exp-date">Present</span>
                 </div>
+                <div class="sidebar-exp-item">
+                    <span class="exp-role">Operations & Finance Assistant</span>
+                    <span class="exp-company">Geotransport S.A.</span>
+                    <span class="exp-date">2025</span>
+                </div>
+                <div class="sidebar-exp-item">
+                    <span class="exp-role">Imports Intern</span>
+                    <span class="exp-company">Venta Directa Glod</span>
+                    <span class="exp-date">2024</span>
+                </div>
+                <div class="sidebar-exp-item">
+                    <span class="exp-role">Technical Advisor (Internship)</span>
+                    <span class="exp-company">Ministerio de Producción</span>
+                    <span class="exp-date">2023</span>
+                </div>
+            </div>
+        </div>
 
-                <nav class="nav-links">
-                    <div class="section-title">Jump to Projects</div>
-                    <a href="#tires" class="nav-item">○ Tire Market Assessment</a>
-                    <a href="#anton" class="nav-item">● Anton Oil Intelligence</a>
-                    <a href="#nestle" class="nav-item">○ Nestlé Intelligence</a>
-                    <a href="#qtgc" class="nav-item">○ QTGC Finance</a>
-                    <a href="#ministerio" class="nav-item">○ Export Strategy</a>
-                </nav>
+        <div class="contact-area">
+            <div class="section-label-sidebar">Connect</div>
+            <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
+            <a href="mailto:diego.chicaiza@example.com">Email ↗</a>
+        </div>
+    </aside>
 
-                <div class="section-title">Experience</div>
-                <div class="sidebar-exp-list">
-                    <div class="sidebar-exp-item">
-                        <span class="exp-role">Analista de Logística (Trainee)</span>
-                        <span class="exp-company">Quito Tenis & Golf Club</span>
-                        <span class="exp-date">Present</span>
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <section class="profile-header">
+            <h1>Business Analyst focused on <span class="highlight">Strategy & Financial Impact.</span></h1>
+            <p class="bio-text">
+                I turn raw customs data into investment theses and operational decisions.
+                My work sits at the intersection of <span class="highlight">financial engineering</span>,
+                BI architecture, and supply chain strategy — with a track record of surfacing
+                seven-figure opportunities from datasets others would overlook.
+            </p>
+        </section>
+
+        <section id="projects">
+            <h2>Selected Work</h2>
+
+            <!-- TIRES -->
+            <a href="project-tires.html" id="tires" class="project-block">
+                <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/tire_header.jpg?raw=true"
+                     class="project-header-img header-contain" alt="Tire Market Header">
+                <div class="project-content">
+                    <div class="project-top-row">
+                        <span class="project-metric">$328M Market Modeled</span>
+                        <span class="project-tag">BI · Strategic Sourcing · M&A</span>
                     </div>
-                    <div class="sidebar-exp-item">
-                        <span class="exp-role">Asistente de Ops. y Finanzas</span>
-                        <span class="exp-company">Geotransport S.A.</span>
-                        <span class="exp-date">2025</span>
+                    <h3 class="project-title">Commercial Tire Market & M&A Assessment</h3>
+                    <p class="project-desc">
+                        Institutional-grade analytical pipeline processing <strong>46,000+ customs records</strong> to map a $328M market.
+                        Features ML-powered predictive cleansing (78.4% accuracy), Star Schema modeling,
+                        and financial simulators to quantify FX arbitrage and M&A consolidation opportunities.
+                    </p>
+                    <div class="stack-row">
+                        <span class="stack-pill">Power BI</span>
+                        <span class="stack-pill">DAX</span>
+                        <span class="stack-pill">Python (ML)</span>
+                        <span class="stack-pill">Power Query</span>
                     </div>
-                    <div class="sidebar-exp-item">
-                        <span class="exp-role">Practicante de Importaciones</span>
-                        <span class="exp-company">Venta Directa Glod</span>
-                        <span class="exp-date">2024</span>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Overview.PNG?raw=true" alt="Market Overview">
+                            <div class="gallery-caption">Structural Market Overview</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Pricing.PNG?raw=true" alt="FX Arbitrage">
+                            <div class="gallery-caption">FX Arbitrage & Margin Capture</div>
+                        </div>
                     </div>
-                    <div class="sidebar-exp-item">
-                        <span class="exp-role">Asesor Técnico (Pasantía)</span>
-                        <span class="exp-company">Ministerio de Producción</span>
-                        <span class="exp-date">2023</span>
+                    <span class="project-cta">View Case Study →</span>
+                </div>
+            </a>
+
+            <!-- ANTON OIL -->
+            <a href="project-anton.html" id="anton" class="project-block">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_HEADER.jpg?raw=true"
+                     class="project-header-img header-contain" alt="Anton Oil Header">
+                <div class="project-content">
+                    <div class="project-top-row">
+                        <span class="project-metric">$608k Cash Flow Protected</span>
+                        <span class="project-tag">Power BI · Financial Engineering</span>
+                    </div>
+                    <h3 class="project-title">Anton Oil Market Intelligence</h3>
+                    <p class="project-desc">
+                        A high-tech "Command Center" mapping a <strong>$4.07B oil import market</strong>.
+                        Transforms 17,000 customs records into strategic intelligence — including a
+                        Fiscal Shield algorithm that identified $608k in protectable cash flow and
+                        exposed a 60x logistics cost gap between air and sea freight.
+                    </p>
+                    <div class="stack-row">
+                        <span class="stack-pill">Power BI</span>
+                        <span class="stack-pill">M (Power Query)</span>
+                        <span class="stack-pill">DAX</span>
+                        <span class="stack-pill">Azure Maps</span>
+                    </div>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA1.png?raw=true" alt="Market Overview">
+                            <div class="gallery-caption">Strategic Market Overview</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA2.png?raw=true" alt="Financial Optimization">
+                            <div class="gallery-caption">Financial & Customs Optimization</div>
+                        </div>
+                    </div>
+                    <span class="project-cta">View Case Study →</span>
+                </div>
+            </a>
+
+            <!-- NESTLÉ -->
+            <a href="project-nestle.html" id="nestle" class="project-block">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true"
+                     class="project-header-img header-contain" alt="Nestlé Cover">
+                <div class="project-content">
+                    <div class="project-top-row">
+                        <span class="project-metric">$490k Opportunity Identified</span>
+                        <span class="project-tag">Power BI · Strategy</span>
+                    </div>
+                    <h3 class="project-title">Nestlé Market Intelligence Dashboard</h3>
+                    <p class="project-desc">
+                        Predictive intelligence platform built on <strong>3.5M import records</strong>.
+                        Delivers portfolio optimization, competitive pricing analysis, and a What-If
+                        financial simulator — surfacing a $490k revenue opportunity concentrated in
+                        underserved premium segments.
+                    </p>
+                    <div class="stack-row">
+                        <span class="stack-pill">Power BI</span>
+                        <span class="stack-pill">DAX</span>
+                        <span class="stack-pill">Power Query</span>
+                    </div>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Financial Simulator">
+                            <div class="gallery-caption">What-If Financial Simulator</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%201.png?raw=true" alt="Competitive Landscape">
+                            <div class="gallery-caption">Competitive Market Landscape</div>
+                        </div>
+                    </div>
+                    <span class="project-cta">View Case Study →</span>
+                </div>
+            </a>
+
+            <!-- QTGC -->
+            <article id="qtgc" class="project-block" style="cursor:default;">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Qtgc.png?raw=true"
+                     class="project-header-img header-contain" alt="QTGC Dashboard">
+                <div class="project-content">
+                    <div class="project-top-row">
+                        <span class="project-metric">+12pts Fill Rate Improvement</span>
+                        <span class="project-tag">Logistics · Financial KPIs</span>
+                    </div>
+                    <h3 class="project-title">QTGC Inventory & Cost Tower</h3>
+                    <p class="project-desc">
+                        Inventory intelligence system designed to improve <strong>Fill Rate</strong> and control Cost of Goods Sold.
+                        Cross-references stock levels with unit costs to surface critical stockouts —
+                        achieving a <strong>12-point improvement in complete orders</strong> across the main distribution centers.
+                    </p>
+                    <div class="stack-row">
+                        <span class="stack-pill">Power BI</span>
+                        <span class="stack-pill">DAX</span>
+                        <span class="stack-pill">Inventory Analytics</span>
+                    </div>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH1.png?raw=true" alt="Cost Diagnostics">
+                            <div class="gallery-caption">Integrated Cost Diagnostics</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH2.png?raw=true" alt="Fill Rate Analysis">
+                            <div class="gallery-caption">Fill Rate & Stockout Analysis</div>
+                        </div>
+                    </div>
+                    <div class="disclaimer">
+                        * Confidentiality note: Data has been randomized and limited to a 3-month window to protect sensitive organizational information.
                     </div>
                 </div>
+            </article>
 
-            </div>
-
-            <div class="contact-area">
-                <div class="section-title">Connect</div>
-                <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
-                <a href="/cdn-cgi/l/email-protection#bdc4cedcdcdecad1d9fddad0dcd4d193ded2d0"><span class="__cf_email__" data-cfemail="760f05171715011a1236111b171f1a5815191b">[email&#160;protected]</span> ↗</a>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            
-            <section class="profile-header">
-                <h1>Business Analyst focusing on <span class="highlight">Strategy & Financial Impact.</span></h1>
-                <p class="bio-text">
-                    Transformando datos complejos en decisiones rentables. 
-                    Mi enfoque combina la estrategia financiera con la eficiencia operativa del Supply Chain.
-                </p>
-            </section>
-
-            <section id="projects">
-                <h2>Selected Work</h2>
-
-                <a href="project-tires.html" id="tires" class="project-block" style="display: block; text-decoration: none; color: inherit;">
-                    <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/tire_header.jpg?raw=true" class="project-header-img header-contain" alt="Tire Market Header">
-                    
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <h3 class="project-title">Commercial Tire Market & M&A Assessment</h3>
-                            <span class="project-tag">BI + Strategic Sourcing</span>
-                        </div>
-                        
-                        <p class="project-desc">
-                            Pipeline analítico de grado institucional procesando más de 46,000 transacciones para evaluar un mercado de <strong>$328 Millones</strong>.
-                            El proyecto incluye modelado de datos con limpieza predictiva (Machine Learning) y simuladores financieros para detectar 
-                            oportunidades de arbitraje cambiario (FX) y consolidación de mercado (M&A).
-                        </p>
-
-                        <div class="project-gallery">
-                            <div class="gallery-item">
-                                <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Overview.PNG?raw=true" alt="Market Overview">
-                                <div class="gallery-caption">Structural Market Overview</div>
-                            </div>
-                            <div class="gallery-item">
-                                <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Tires_Pricing.PNG?raw=true" alt="Macro Margin Capture">
-                                <div class="gallery-caption">Macro Margin Capture & Arbitrage</div>
-                            </div>
-                        </div>
+            <!-- EXPORT STRATEGY -->
+            <article id="ministerio" class="project-block" style="cursor:default;">
+                <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/AGUACATE_HEADER%20-%20copia.png?raw=true"
+                     class="project-header-img header-contain" alt="Asian Market Header">
+                <div class="project-content">
+                    <div class="project-top-row">
+                        <span class="project-metric">$26.8M NPV Opportunity</span>
+                        <span class="project-tag">Consumer Behavior · Market Sizing</span>
                     </div>
-                </a>
-
-                <a href="project-anton.html" id="anton" class="project-block" style="display: block; text-decoration: none; color: inherit;">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_HEADER.jpg?raw=true" class="project-header-img header-contain" alt="Anton Oil Header">
-                    
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <h3 class="project-title">Anton Oil Market Intelligence</h3>
-                            <span class="project-tag">Power BI + Financial Engineering</span>
-                        </div>
-                        
-                        <p class="project-desc">
-                            Diseño de un "Command Center" para visualizar un mercado de importación de <strong>$4.07 Billones</strong>. 
-                            El sistema transforma 17,000 registros de aduana en insights estratégicos, incluyendo un algoritmo de <strong>Escudo Fiscal</strong> que detectó <strong>$608k en protección de flujo de caja</strong> y optimización logística.
-                        </p>
-
-                        <div class="project-gallery">
-                            <div class="gallery-item">
-                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA1.png?raw=true" alt="Market Overview">
-                                <div class="gallery-caption">Strategic Market Overview</div>
-                            </div>
-                            <div class="gallery-item">
-                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ANTON_VISTA2.png?raw=true" alt="Financial Optimization">
-                                <div class="gallery-caption">Financial & Customs Optimization</div>
-                            </div>
-                        </div>
+                    <h3 class="project-title">Asian Market Expansion & Consumer Insights</h3>
+                    <p class="project-desc">
+                        Data-driven market penetration strategy identifying a <strong>$26.8M NPV opportunity</strong> in South Korea.
+                        Analyzed healthy consumption trends and demographic segmentation, crossing tariff barriers
+                        with Asian shopper behavior to define a profitable export route.
+                    </p>
+                    <div class="stack-row">
+                        <span class="stack-pill">Excel</span>
+                        <span class="stack-pill">Financial Modeling</span>
+                        <span class="stack-pill">Market Research</span>
                     </div>
-                </a>
-
-                <a href="project-nestle.html" id="nestle" class="project-block" style="display: block; text-decoration: none; color: inherit;">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" class="project-header-img header-contain" alt="Nestle Cover">
-    
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <h3 class="project-title">Nestlé Market Intelligence</h3>
-                            <span class="project-tag">Power BI + Strategy</span>
-                        </div>
-        
-                        <p class="project-desc">
-                            Optimización de portafolio y simulación financiera de <strong>$490k USD</strong>. 
-                            Desarrollo de un sistema de Business Intelligence para analizar 3.5M kg de importaciones. 
-                            La solución incluye simuladores financieros (What-If), detección de nichos premium y forecasting predictivo.
-                        </p>
-
-                        <div class="project-gallery">
-                            <div class="gallery-item">
-                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Vista Financiera">
-                                <div class="gallery-caption">Simulación de Rentabilidad</div>
-                            </div>
-                            <div class="gallery-item">
-                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%201.png?raw=true" alt="Vista Mercado">
-                                <div class="gallery-caption">Panorama Competitivo</div>
-                            </div>
-                        </div>
+                    <div class="project-gallery">
+                        <a href="https://drive.google.com/file/d/1aNye18EtJOdZ52E2yhBb9ySV2M3o4Hj0/view?usp=sharing"
+                           target="_blank" class="gallery-item">
+                            <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Rentabilidad_Mercado.png?raw=true" alt="Financial Model">
+                            <div class="gallery-caption">Financial Model (IRR / NPV) ↗</div>
+                        </a>
+                        <a href="https://drive.google.com/file/d/11bXwxvyDIBt5VV85xY7GkKE87j1dA7Al/view?usp=sharing"
+                           target="_blank" class="gallery-item">
+                            <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Estudio_Mercado.png?raw=true" alt="Market Study">
+                            <div class="gallery-caption">Market Analysis (South Korea) ↗</div>
+                        </a>
                     </div>
-                </a>
+                </div>
+            </article>
 
-                <article id="qtgc" class="project-block">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Qtgc.png?raw=true" class="project-header-img header-contain" alt="QTGC Dashboard">
-                    
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <h3 class="project-title">QTGC Inventory & Cost Tower</h3>
-                            <span class="project-tag">Logistics + Financial KPIs</span>
-                        </div>
-                        
-                        <p class="project-desc">
-                            Sistema de Inteligencia de Inventarios para mejorar el <strong>Nivel de Servicio (Fill Rate)</strong> y controlar el Costo de Ventas.
-                            La herramienta cruza datos de existencias con costos unitarios para detectar quiebres de stock críticos, logrando una mejora de 
-                            <strong>12 puntos en órdenes completas</strong> en las bodegas principales.
-                        </p>
+        </section>
+    </main>
+</div>
 
-                        <div class="project-gallery">
-                            <div class="gallery-item">
-                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH1.png?raw=true" alt="Diagnóstico Integral">
-                                <div class="gallery-caption">Diagnóstico Integral de Costos</div>
-                            </div>
-                            <div class="gallery-item">
-                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH2.png?raw=true" alt="Análisis de Quiebres">
-                                <div class="gallery-caption">Análisis de Nivel de Servicio y Quiebres</div>
-                            </div>
-                        </div>
-                        
-                        <div class="disclaimer">
-                            * Nota de Confidencialidad: Los datos presentados han sido randomizados y limitados a un periodo de 3 meses para proteger la integridad de la información sensible de la organización.
-                        </div>
-                    </div>
-                </article>
+<!-- SCROLL-SPY -->
+<script>
+    const sections  = ['tires', 'anton', 'nestle', 'qtgc', 'ministerio'];
+    const navItems  = {};
+    sections.forEach(id => {
+        navItems[id] = document.querySelector(`.nav-item[data-section="${id}"]`);
+    });
 
-                <article id="ministerio" class="project-block">
-                    <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/AGUACATE_HEADER%20-%20copia.png?raw=true" class="project-header-img header-contain" alt="Asian Market Header">
-                    
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <h3 class="project-title">Asian Market Expansion & Consumer Insights</h3>
-                            <span class="project-tag">Consumer Behavior + Market Sizing</span>
-                        </div>
-                        
-                        <p class="project-desc">
-                            Estrategia de penetración de mercado basada en datos. Se identificó una oportunidad de 
-                            <strong>$26.8M (VAN)</strong> en Corea del Sur analizando tendencias de consumo saludable y segmentación demográfica. 
-                            El estudio cruza barreras arancelarias con preferencias del <strong>'Shopper' asiático</strong> para definir una ruta de exportación rentable.
-                        </p>
+    function updateNav() {
+        const threshold = window.scrollY + window.innerHeight * 0.38;
+        let active = null;
+        for (const id of sections) {
+            const el = document.getElementById(id);
+            if (el && el.offsetTop <= threshold) active = id;
+        }
+        sections.forEach(id => {
+            if (navItems[id]) navItems[id].classList.toggle('active', id === active);
+        });
+    }
 
-                        <div class="project-gallery">
-                            <a href="https://drive.google.com/file/d/1aNye18EtJOdZ52E2yhBb9ySV2M3o4Hj0/view?usp=sharing" target="_blank" class="gallery-item">
-                                <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Rentabilidad_Mercado.png?raw=true" alt="Propuesta Negocio">
-                                <div class="gallery-caption">Modelo Financiero (TIR/VAN) ↗</div>
-                            </a>
-                            
-                            <a href="https://drive.google.com/file/d/11bXwxvyDIBt5VV85xY7GkKE87j1dA7Al/view?usp=sharing" target="_blank" class="gallery-item">
-                                <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Estudio_Mercado.png?raw=true" alt="Estudio Mercado">
-                                <div class="gallery-caption">Análisis de Mercado (Corea) ↗</div>
-                            </a>
-                        </div>
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+</script>
+
+</body>
+</html>
