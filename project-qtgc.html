@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QTGC Inventory Intelligence System</title>
+    <link rel="icon" href="https://github.com/htmlpapu/Assets-Portafolio/blob/main/fav_icon_64x.png?raw=true" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #050505;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.1);
+            --border: #262626;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            margin: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        nav {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .back-link:hover { color: var(--accent); transform: translateX(-5px); }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 8rem 2rem;
+        }
+
+        /* --- HERO --- */
+        .hero-tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        /* --- META GRID --- */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            margin-bottom: 4rem;
+        }
+        .meta-item h4 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: #555;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+        }
+        .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
+
+        /* --- IMAGES --- */
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 2rem 0 1rem 0;
+            border: 1px solid #222;
+            transition: transform 0.3s ease;
+        }
+        img:hover { border-color: #444; transform: scale(1.01); }
+
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 4rem;
+            display: block;
+            margin-top: -0.5rem;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 5rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: #e5e7eb;
+        }
+        p {
+            font-size: 1.05rem;
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+        }
+        strong { color: #fff; }
+
+        /* --- LISTS --- */
+        ul { list-style-type: none; padding: 0; }
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #d1d5db;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        li::before {
+            content: "▹";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- HIGHLIGHT BOX --- */
+        .highlight-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .highlight-text {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #fff;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* --- RESULTS TABLE --- */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0 4rem 0;
+            font-size: 0.95rem;
+        }
+        .results-table th {
+            text-align: left;
+            padding: 0.85rem 1.2rem;
+            background: rgba(16, 185, 129, 0.08);
+            color: var(--accent);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .results-table td {
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid #1a1a1a;
+            color: #d1d5db;
+            vertical-align: middle;
+        }
+        .results-table tr:last-child td { border-bottom: none; }
+        .results-table td:first-child { color: #9ca3af; font-size: 0.9rem; }
+        .results-table td.before { color: #6b7280; }
+        .results-table td.after {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        /* --- ARCH GRID --- */
+        .arch-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        .arch-grid img {
+            margin: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* --- STACK PILLS --- */
+        .stack-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        .stack-pill {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            color: #9ca3af;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .stack-pill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* --- TAG GRID --- */
+        .tag-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .tag {
+            background: rgba(16, 185, 129, 0.06);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        /* --- CLOSING LINE --- */
+        .closing-line {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin: 5rem 0 2rem 0;
+            letter-spacing: -0.01em;
+            line-height: 1.4;
+        }
+        .closing-line span { color: var(--accent); }
+
+        /* --- DISCLAIMER --- */
+        .disclaimer {
+            font-size: 0.82rem;
+            color: #444;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .article-container { padding: 1.5rem; }
+            .results-table { font-size: 0.85rem; }
+            .results-table th, .results-table td { padding: 0.65rem 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </nav>
+
+    <div class="article-container">
+
+        <span class="hero-tag">Supply Chain Engineering · In Production</span>
+        <h1 class="hero-title">Inventory Intelligence System — QTGC</h1>
+        <p class="hero-subtitle">Multi-warehouse supply chain planning across a full hospitality operation — built from scratch, zero incremental cost.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Logistics & Data Analyst</p>
+            </div>
+            <div class="meta-item">
+                <h4>Stack</h4>
+                <p>Python · GitHub Actions · AppSheets · ERP Zeus</p>
+            </div>
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>$248k Inventory Under Unified Management</p>
+            </div>
+        </div>
+
+        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Header_Qtgc.png?raw=true" alt="QTGC System Header">
+
+        <!-- HOOK -->
+        <h2>The System</h2>
+        <p>
+            A full-stack supply chain planning system that replaced gut-feel purchasing with statistical forecasting 
+            across three warehouses of a premium social club. Designed, built, and deployed solo. 
+            <strong>Currently running in production</strong> across Kitchen, General & Beverages, and Maintenance operations.
+        </p>
+
+        <!-- THE PROBLEM -->
+        <h2>The Problem</h2>
+        <p>
+            The club operated three independent warehouses — Kitchen, General & Beverages, and Maintenance — each 
+            purchasing reactively, with no shared demand model, no cross-warehouse visibility, and no automated alerts. 
+            An ERP audit of the Kitchen warehouse alone revealed <strong>$220K+ in annual purchasing outside any control framework</strong>. 
+            The same structural problem existed across all three operations, representing a combined inventory of 
+            <strong>$248K with zero data-driven oversight</strong>.
+        </p>
+
+        <div class="highlight-box">
+            <p class="highlight-text">
+                "An ERP audit revealed 49 items with underestimated StockMaximo and 33 items with fragmented orders — LOMO FINO alone had 7.7 actual orders per month vs. 3 suggested by the model."
+            </p>
+        </div>
+
+        <!-- THE SOLUTION -->
+        <h2>What Was Built</h2>
+        <p>
+            A unified supply chain planning platform deployed across three warehouses — same pipeline, same mathematical 
+            framework, parametrized per operation.
+        </p>
+        <p style="color: #6b7280; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.5rem;">Pipeline Flow</p>
+        <p><strong>ERP Extraction → ETL in Python → Weighted Moving Average model → Automated alert system → Google Sheets dashboard → Mobile interface for real-time stock counting.</strong></p>
+
+        <div class="arch-grid">
+            <div>
+                <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/QTGC_ARCH.jpg?raw=true" alt="System Architecture">
+                <span class="caption">System Architecture — ERP to Mobile Interface</span>
+            </div>
+        </div>
+
+        <!-- TECHNICAL DEPTH -->
+        <h2>What Makes It Technically Interesting</h2>
+
+        <h3>1. Production-Aware Demand Model</h3>
+        <p>
+            WMA integrates direct consumption + internal production output for Kitchen. Chicken breast demand = 
+            direct use + portioned proteins produced in-house. Before this, the model was suggesting 
+            <strong>half the required quantity</strong> for key proteins because it couldn't see the transformation layer.
+            A reverse-frequency transformation map eliminates false insumo-product relationships from co-occurrence noise.
+        </p>
+
+        <h3>2. Statistical Safety Stock</h3>
+        <p>
+            95% service level using 6-month sigma with lead time adjustment per SKU — not a flat buffer percentage, 
+            but a statistically calibrated threshold per item based on its own demand volatility and reorder cycle.
+        </p>
+
+        <h3>3. Operational Semaphore v5</h3>
+        <p>
+            3 actionable states designed around the club's actual ordering cadence (Saturday/Sunday orders). 
+            Thresholds calibrated to 30-day coverage windows — eliminates false urgency on items the 
+            previous system flagged with 60–100 days of stock.
+        </p>
+
+        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/QTGC_SEMAFORO.jpg?raw=true" alt="Semaphore Dashboard v5">
+        <span class="caption">Operational Semaphore v5 — 3 Actionable States</span>
+
+        <h3>4. Full CI/CD via GitHub Actions</h3>
+        <p>
+            Three trigger modes: <strong>scheduled</strong> (every Monday 7 AM), <strong>manual</strong>, and 
+            <strong>webhook</strong> from the mobile app. End-to-end run time: 60 seconds. 
+            Google Apps Script connects ERP → Physical Count → webhook in a single tap.
+        </p>
+
+        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/QTGC_MOBILE.jpg?raw=true" alt="AppSheets Mobile Interface">
+        <span class="caption">AppSheets Mobile Interface — Physical Count & Pipeline Trigger</span>
+
+        <!-- STACK -->
+        <h2>Stack</h2>
+        <div class="stack-row">
+            <span class="stack-pill">Python 3.11</span>
+            <span class="stack-pill">Pandas</span>
+            <span class="stack-pill">NumPy</span>
+            <span class="stack-pill">Google Sheets API</span>
+            <span class="stack-pill">Google Drive API</span>
+            <span class="stack-pill">AppSheets</span>
+            <span class="stack-pill">Google Apps Script</span>
+            <span class="stack-pill">GitHub Actions (CI/CD)</span>
+            <span class="stack-pill">ERP Zeus</span>
+        </div>
+
+        <!-- RESULTS -->
+        <h2>Results</h2>
+        <p>Measured across deployed warehouses. Kitchen warehouse baseline: 375 active SKUs, $40,978 valued inventory.</p>
+
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Before</th>
+                    <th>After</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Purchase orders per supplier / month</td>
+                    <td class="before">4–5</td>
+                    <td class="after">≤ 2</td>
+                </tr>
+                <tr>
+                    <td>Fill rate</td>
+                    <td class="before">Baseline</td>
+                    <td class="after">+8 percentage points</td>
+                </tr>
+                <tr>
+                    <td>Re-entry corrections</td>
+                    <td class="before">Frequent</td>
+                    <td class="after">Significantly reduced</td>
+                </tr>
+                <tr>
+                    <td>Stock visibility</td>
+                    <td class="before">Manual, delayed</td>
+                    <td class="after">Automated, every Monday 7 AM</td>
+                </tr>
+                <tr>
+                    <td>Warehouses under unified management</td>
+                    <td class="before">0</td>
+                    <td class="after">3</td>
+                </tr>
+                <tr>
+                    <td>Total inventory under management</td>
+                    <td class="before">$0 data-driven</td>
+                    <td class="after">$248,768</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/QTGC_RESULTS.jpg?raw=true" alt="System Results Output">
+        <span class="caption">Weekly Plan Output — Consolidated by Supplier & Warehouse</span>
+
+        <!-- SCALABILITY -->
+        <h2>Scalability & Deployment</h2>
+        <p>
+            The same model was parametrized for three structurally different operational contexts — not replicated, 
+            but adapted to each warehouse's demand patterns, ordering cadence, and business logic:
+        </p>
+        <ul>
+            <li><strong>Kitchen:</strong> Perishable proteins and fresh produce with 2–4 day shelf life. Production-aware demand model integrating transformation outputs.</li>
+            <li><strong>General & Beverages:</strong> Bulk beverages and dry goods. Standard WMA with extended lead times and supplier consolidation logic.</li>
+            <li><strong>Maintenance:</strong> Asset criticality-based stocking model — adapted from consumption forecasting to criticality-weighted safety stock.</li>
+        </ul>
+        <p>
+            Three warehouses, one codebase, <strong>zero additional infrastructure cost</strong>. 
+            Approved for expansion to Maintenance by management — validation that the system generates 
+            operational confidence at the executive level, not just technical.
+        </p>
+
+        <div class="highlight-box">
+            <p class="highlight-text">
+                "The ability to design a system once and scale it across structurally different operational contexts. Three warehouses, one codebase, zero additional infrastructure cost."
+            </p>
+        </div>
+
+        <!-- CLOSING -->
+        <p class="closing-line">
+            <span>Three warehouses.</span> One system.<br>Built by one analyst who decided the operation deserved better data.
+        </p>
+
+        <!-- TAGS -->
+        <div class="tag-grid">
+            <span class="tag">Supply Chain Analytics</span>
+            <span class="tag">Python</span>
+            <span class="tag">ETL</span>
+            <span class="tag">Demand Forecasting</span>
+            <span class="tag">WMA</span>
+            <span class="tag">Multi-Warehouse</span>
+            <span class="tag">Google Cloud</span>
+            <span class="tag">AppSheets</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Inventory Optimization</span>
+            <span class="tag">Production Planning</span>
+            <span class="tag">Data Engineering</span>
+            <span class="tag">End-to-End Project</span>
+            <span class="tag">Hospitality Operations</span>
+        </div>
+
+        <div class="disclaimer">
+            * Confidentiality note: Specific supplier names, item-level pricing, and organization-sensitive data have been anonymized to protect organizational confidentiality.
+        </div>
+
+    </div>
+
+</body>
+</html>
