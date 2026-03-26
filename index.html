@@ -332,7 +332,7 @@
         <div class="contact-area">
             <div class="section-label-sidebar">Connect</div>
             <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
-            <a href="mailto:diego.chicaiza@example.com">Email ↗</a>
+            <a href="/cdn-cgi/l/email-protection#5e3a373b3931703d36373d3f37243f1e3b263f332e323b703d3133">Email ↗</a>
         </div>
     </aside>
 
@@ -351,6 +351,43 @@
 
         <section id="projects">
             <h2>Selected Work</h2>
+
+            <!-- QTGC -->
+            <a href="project-qtgc.html" id="qtgc" class="project-block">
+                <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/Header_Qtgc.png?raw=true"
+                     class="project-header-img header-contain" alt="QTGC Inventory Intelligence System">
+                <div class="project-content">
+                    <div class="project-top-row">
+                        <span class="project-metric">$248k Inventory Under Unified Management</span>
+                        <span class="project-tag">Supply Chain Engineering · In Production</span>
+                    </div>
+                    <h3 class="project-title">Inventory Intelligence System — QTGC</h3>
+                    <p class="project-desc">
+                        A full-stack supply chain planning system replacing gut-feel purchasing with statistical forecasting 
+                        across <strong>three warehouses</strong> of a premium social club. Built solo, deployed in production — 
+                        WMA demand model, 95% service level safety stock, CI/CD via GitHub Actions, and a mobile interface 
+                        for real-time stock counting. <strong>Zero incremental infrastructure cost.</strong>
+                    </p>
+                    <div class="stack-row">
+                        <span class="stack-pill">Python</span>
+                        <span class="stack-pill">GitHub Actions</span>
+                        <span class="stack-pill">AppSheets</span>
+                        <span class="stack-pill">Google Sheets API</span>
+                        <span class="stack-pill">ERP Zeus</span>
+                    </div>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/QTGC_SEMAFORO.jpg?raw=true" alt="Operational Semaphore">
+                            <div class="gallery-caption">Operational Semaphore v5</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/QTGC_MOBILE.jpg?raw=true" alt="Mobile Interface">
+                            <div class="gallery-caption">AppSheets Mobile Interface</div>
+                        </div>
+                    </div>
+                    <span class="project-cta">View Case Study →</span>
+                </div>
+            </a>
 
             <!-- TIRES -->
             <a href="project-tires.html" id="tires" class="project-block">
@@ -458,42 +495,6 @@
                 </div>
             </a>
 
-            <!-- QTGC -->
-            <article id="qtgc" class="project-block" style="cursor:default;">
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Qtgc.png?raw=true"
-                     class="project-header-img header-contain" alt="QTGC Dashboard">
-                <div class="project-content">
-                    <div class="project-top-row">
-                        <span class="project-metric">+12pts Fill Rate Improvement</span>
-                        <span class="project-tag">Logistics · Financial KPIs</span>
-                    </div>
-                    <h3 class="project-title">QTGC Inventory & Cost Tower</h3>
-                    <p class="project-desc">
-                        Inventory intelligence system designed to improve <strong>Fill Rate</strong> and control Cost of Goods Sold.
-                        Cross-references stock levels with unit costs to surface critical stockouts —
-                        achieving a <strong>12-point improvement in complete orders</strong> across the main distribution centers.
-                    </p>
-                    <div class="stack-row">
-                        <span class="stack-pill">Power BI</span>
-                        <span class="stack-pill">DAX</span>
-                        <span class="stack-pill">Inventory Analytics</span>
-                    </div>
-                    <div class="project-gallery">
-                        <div class="gallery-item">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH1.png?raw=true" alt="Cost Diagnostics">
-                            <div class="gallery-caption">Integrated Cost Diagnostics</div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH2.png?raw=true" alt="Fill Rate Analysis">
-                            <div class="gallery-caption">Fill Rate & Stockout Analysis</div>
-                        </div>
-                    </div>
-                    <div class="disclaimer">
-                        * Confidentiality note: Data has been randomized and limited to a 3-month window to protect sensitive organizational information.
-                    </div>
-                </div>
-            </article>
-
             <!-- EXPORT STRATEGY -->
             <article id="ministerio" class="project-block" style="cursor:default;">
                 <img src="https://github.com/diego-chte/Assets-Portafolio/blob/main/AGUACATE_HEADER%20-%20copia.png?raw=true"
@@ -534,8 +535,8 @@
 </div>
 
 <!-- SCROLL-SPY -->
-<script>
-    const sections  = ['tires', 'anton', 'nestle', 'qtgc', 'ministerio'];
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const sections  = ['qtgc', 'tires', 'anton', 'nestle', 'ministerio'];
     const navItems  = {};
     sections.forEach(id => {
         navItems[id] = document.querySelector(`.nav-item[data-section="${id}"]`);
@@ -549,13 +550,4 @@
             if (el && el.offsetTop <= threshold) active = id;
         }
         sections.forEach(id => {
-            if (navItems[id]) navItems[id].classList.toggle('active', id === active);
-        });
-    }
-
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-</script>
-
-</body>
-</html>
+            if (navItems[id]) navItems[id].classList.toggle('active', i
